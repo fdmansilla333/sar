@@ -1,12 +1,28 @@
+/*
+Comunicacion bluetooth
+Esta prueba determina la velocidad del Bluetooth al enviar caracteres
+desde una notebook y smartphone utilizando el BT en ambos casos.
+Con un Serial 9600, y un BT 9600 baudios.
+La velocidad alcanzada fue de 1,17kb.
+Se propone realizar otra prueba aumentando los baudios a 115200bps, donde se debería llegar a
+14.0625 Kb
+Dada esta prueba se obtiene que la máxima velocidad de 14kb, tardaría 21 sg en transmitir una imagen de 300kb.
+Máxima velocidad del módulo (fuera de norma=C) 1382400 bps = 168,75 Kb/s
+El módulo HC.06 puede alcanzar una velocidad de 1586 kb/s
+Link de información: http://www.prometec.net/bt-hc05/
+Link calculator: http://www.calculator.org/property.aspx?name=data+rate
+ */
 #include <SoftwareSerial.h>
 
 SoftwareSerial bluetooth(10, 11); // RX, TX
 long cont;
 long tiempoini;
-
+/**
+ * [setup description]
+ */
 void setup()
 {
-// Open serial communications and wait for port to open:
+
 Serial.begin(9600);
 bluetooth.begin(9600);
 cont = 0;
@@ -18,7 +34,7 @@ long tiempofin;
 unsigned long antes=0;
 unsigned long despues=0;
 
-void loop() // run over and over
+void loop()
 {
   tiempoini = millis();
   while(segundos < 1.0){
@@ -38,7 +54,5 @@ void loop() // run over and over
   }
   segundos =0;
   cont=0;
-  //Serial.write( bluetooth.read());
-  //if (Serial.available())
-  //  bluetooth.write(Serial.read());
+  /
 }
