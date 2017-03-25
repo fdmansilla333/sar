@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Sistema Autonomo Robótico: Fichero Fuente Test/Bluetooth/ComandosAT_ModBluetooth/ComandosAT_ModBluetooth.ino</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="../../logoArduino.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Sistema Autonomo Robótico
+   &#160;<span id="projectnumber">1.0.0</span>
+   </div>
+   <div id="projectbrief">Desarrollo y construcción de un sistema autónomo robótico administrado por una aplicación móvil para exploración</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../../search",false,'Buscar');
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('../../',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('df/d0d/_comandos_a_t___mod_bluetooth_8ino_source.html','../../');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">ComandosAT_ModBluetooth.ino</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../df/d0d/_comandos_a_t___mod_bluetooth_8ino.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;SoftwareSerial.h&gt;</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;SoftwareSerial <a class="code" href="../../df/d0d/_comandos_a_t___mod_bluetooth_8ino.html#a14bb84b12818dd2f13acf63d4cb14d98">BTSerial</a>(10, 11); <span class="comment">// RX | TX</span></div><div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="../../df/d0d/_comandos_a_t___mod_bluetooth_8ino.html#a4fc01d736fe50cf5b977f755b675f11d">    9</a></span>&#160;<span class="comment"></span><span class="keywordtype">void</span> <a class="code" href="../../df/d0d/_comandos_a_t___mod_bluetooth_8ino.html#a4fc01d736fe50cf5b977f755b675f11d">setup</a>(){</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;  pinMode(9, OUTPUT);  <span class="comment">// this pin will pull the HC-05 pin 34 (key pin) HIGH to switch module to AT mode</span></div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;  digitalWrite(9, HIGH);</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;  Serial.begin(9600);</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  Serial.println(<span class="stringliteral">&quot;Enter AT commands:&quot;</span>);</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  <a class="code" href="../../df/d0d/_comandos_a_t___mod_bluetooth_8ino.html#a14bb84b12818dd2f13acf63d4cb14d98">BTSerial</a>.begin(38400);  <span class="comment">// HC-05 default speed in AT command more</span></div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;}</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div><div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="../../df/d0d/_comandos_a_t___mod_bluetooth_8ino.html#afe461d27b9c48d5921c00d521181f12f">   17</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../df/d0d/_comandos_a_t___mod_bluetooth_8ino.html#afe461d27b9c48d5921c00d521181f12f">loop</a>(){</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <span class="comment">// Keep reading from HC-05 and send to Arduino Serial Monitor</span></div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="../../df/d0d/_comandos_a_t___mod_bluetooth_8ino.html#a14bb84b12818dd2f13acf63d4cb14d98">BTSerial</a>.available())</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    Serial.write(<a class="code" href="../../df/d0d/_comandos_a_t___mod_bluetooth_8ino.html#a14bb84b12818dd2f13acf63d4cb14d98">BTSerial</a>.read());</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <span class="comment">// Keep reading from Arduino Serial Monitor and send to HC-05</span></div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keywordflow">if</span> (Serial.available())</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="../../df/d0d/_comandos_a_t___mod_bluetooth_8ino.html#a14bb84b12818dd2f13acf63d4cb14d98">BTSerial</a>.write(Serial.read());</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;}</div><div class="ttc" id="_comandos_a_t___mod_bluetooth_8ino_html_afe461d27b9c48d5921c00d521181f12f"><div class="ttname"><a href="../../df/d0d/_comandos_a_t___mod_bluetooth_8ino.html#afe461d27b9c48d5921c00d521181f12f">loop</a></div><div class="ttdeci">void loop()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d0d/_comandos_a_t___mod_bluetooth_8ino_source.html#l00017">ComandosAT_ModBluetooth.ino:17</a></div></div>
+<div class="ttc" id="_comandos_a_t___mod_bluetooth_8ino_html_a14bb84b12818dd2f13acf63d4cb14d98"><div class="ttname"><a href="../../df/d0d/_comandos_a_t___mod_bluetooth_8ino.html#a14bb84b12818dd2f13acf63d4cb14d98">BTSerial</a></div><div class="ttdeci">SoftwareSerial BTSerial(10, 11)</div></div>
+<div class="ttc" id="_comandos_a_t___mod_bluetooth_8ino_html_a4fc01d736fe50cf5b977f755b675f11d"><div class="ttname"><a href="../../df/d0d/_comandos_a_t___mod_bluetooth_8ino.html#a4fc01d736fe50cf5b977f755b675f11d">setup</a></div><div class="ttdeci">void setup()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d0d/_comandos_a_t___mod_bluetooth_8ino_source.html#l00009">ComandosAT_ModBluetooth.ino:9</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_37618a71d99bdfed5979e976980d5eec.html">Test</a></li><li class="navelem"><a class="el" href="../../dir_4f7f307a96aaf02c679a4e3d869c6d27.html">Bluetooth</a></li><li class="navelem"><a class="el" href="../../dir_94fef273a4289d606719f7ea3b4659b0.html">ComandosAT_ModBluetooth</a></li><li class="navelem"><a class="el" href="../../df/d0d/_comandos_a_t___mod_bluetooth_8ino.html">ComandosAT_ModBluetooth.ino</a></li>
+    <li class="footer">Generado por
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
+</body>
+</html>

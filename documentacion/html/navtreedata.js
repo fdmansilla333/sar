@@ -1,12 +1,24 @@
 var NAVTREE =
 [
   [ "Sistema Autonomo Robótico", "index.html", [
-    [ "sar", "de/dd7/md__c_1__users_fdman__desktop_sar_sar__r_e_a_d_m_e.html", null ],
+    [ "sar", "d3/dcc/md__r_e_a_d_m_e.html", null ],
+    [ "Clases", "annotated.html", [
+      [ "Lista de clases", "annotated.html", "annotated_dup" ],
+      [ "Índice de clases", "classes.html", null ],
+      [ "Miembros de las clases", "functions.html", [
+        [ "Todo", "functions.html", null ],
+        [ "Funciones", "functions_func.html", null ],
+        [ "Variables", "functions_vars.html", null ],
+        [ "Valores de enumeraciones", "functions_eval.html", null ]
+      ] ]
+    ] ],
     [ "Archivos", null, [
       [ "Lista de archivos", "files.html", "files" ],
       [ "Miembros de los ficheros", "globals.html", [
         [ "Todo", "globals.html", null ],
-        [ "Funciones", "globals_func.html", null ]
+        [ "Funciones", "globals_func.html", null ],
+        [ "Variables", "globals_vars.html", null ],
+        [ "defines", "globals_defs.html", null ]
       ] ]
     ] ]
   ] ]
@@ -14,7 +26,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"d6/dab/_bluetooth___respuesta_8ino.html"
+"annotated.html"
 ];
 
 var SYNCONMSG = 'click en deshabilitar sincronización';

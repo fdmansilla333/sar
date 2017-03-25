@@ -1,0 +1,415 @@
+\hypertarget{class_tiny_g_p_s}{}\section{Referencia de la Clase Tiny\+G\+PS}
+\label{class_tiny_g_p_s}\index{Tiny\+G\+PS@{Tiny\+G\+PS}}
+
+
+{\ttfamily \#include $<$Tiny\+G\+P\+S.\+h$>$}
+
+\subsection*{Tipos públicos}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \newline
+\hyperlink{class_tiny_g_p_s_adefa8554723aa8802edacd6094366f6fa79f64b88d2e9b3782612fed695d4c1a7}{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+GE} = 0x\+F\+F\+F\+F\+F\+F\+FF, 
+\hyperlink{class_tiny_g_p_s_adefa8554723aa8802edacd6094366f6fa4acc5c7138410c0d060b943190bd61fa}{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+N\+G\+LE} = 999999999, 
+\hyperlink{class_tiny_g_p_s_adefa8554723aa8802edacd6094366f6fa11af99b96673aa7b2919f4ce934deb15}{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+L\+T\+I\+T\+U\+DE} = 999999999, 
+\hyperlink{class_tiny_g_p_s_adefa8554723aa8802edacd6094366f6fa69def061d27ec3ad1d6982acd730f3c8}{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+D\+A\+TE} = 0, 
+\newline
+\hyperlink{class_tiny_g_p_s_adefa8554723aa8802edacd6094366f6fa1b7d220428b8d7bf86f71b82e729b432}{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+T\+I\+ME} = 0x\+F\+F\+F\+F\+F\+F\+FF, 
+\hyperlink{class_tiny_g_p_s_adefa8554723aa8802edacd6094366f6fac40011126774b10aaf5f65558f907d33}{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+P\+E\+ED} = 999999999, 
+\hyperlink{class_tiny_g_p_s_adefa8554723aa8802edacd6094366f6fa13092501160cf2a1c52b517f62cc696e}{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+I\+X\+\_\+\+T\+I\+ME} = 0x\+F\+F\+F\+F\+F\+F\+FF, 
+\hyperlink{class_tiny_g_p_s_adefa8554723aa8802edacd6094366f6fafe0e59ff6f89b52341190684a91cf695}{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+A\+T\+E\+L\+L\+I\+T\+ES} = 0x\+FF, 
+\newline
+\hyperlink{class_tiny_g_p_s_adefa8554723aa8802edacd6094366f6fa095bfdc8e38a31c6e1796bd58323b346}{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+H\+D\+OP} = 0x\+F\+F\+F\+F\+F\+F\+FF
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_tiny_g_p_s_a588e9c23a20a6dfb6289b75408edde9f}{Tiny\+G\+PS} ()
+\item 
+bool \hyperlink{class_tiny_g_p_s_ab6b2697b2968dc6a020404795f1aa169}{encode} (char c)
+\item 
+\hyperlink{class_tiny_g_p_s}{Tiny\+G\+PS} \& \hyperlink{class_tiny_g_p_s_a63c3ffc6a8dd02050ec1c57ac11cfbb6}{operator$<$$<$} (char c)
+\item 
+void \hyperlink{class_tiny_g_p_s_a70ba85cc7d84a915b6b1c379471e862b}{get\+\_\+position} (long $\ast$latitude, long $\ast$longitude, unsigned long $\ast$fix\+\_\+age=0)
+\item 
+void \hyperlink{class_tiny_g_p_s_a08a6109f024623c7b5693c344e77e177}{get\+\_\+datetime} (unsigned long $\ast$date, unsigned long $\ast$time, unsigned long $\ast$age=0)
+\item 
+long \hyperlink{class_tiny_g_p_s_ade1d05eabfb8ca0f6924ba1a8568b55c}{altitude} ()
+\item 
+unsigned long \hyperlink{class_tiny_g_p_s_adbc4a27bc7a804b3f967b15b6091d715}{course} ()
+\item 
+unsigned long \hyperlink{class_tiny_g_p_s_aa1963e08aecceefe643b8aa31a29c0bc}{speed} ()
+\item 
+unsigned short \hyperlink{class_tiny_g_p_s_ae7664d48de81f316ebf40d7c8d37d1b6}{satellites} ()
+\item 
+unsigned long \hyperlink{class_tiny_g_p_s_aa8777e03607e275ab8d80f37f08f25ff}{hdop} ()
+\item 
+void \hyperlink{class_tiny_g_p_s_a7deea07a7208113c9a37f25cf52d8580}{f\+\_\+get\+\_\+position} (float $\ast$latitude, float $\ast$longitude, unsigned long $\ast$fix\+\_\+age=0)
+\item 
+void \hyperlink{class_tiny_g_p_s_a2a9c14bdb5efa8f3f3b8f5dc6553a284}{crack\+\_\+datetime} (int $\ast$year, byte $\ast$month, byte $\ast$day, byte $\ast$hour, byte $\ast$minute, byte $\ast$second, byte $\ast$hundredths=0, unsigned long $\ast$fix\+\_\+age=0)
+\item 
+float \hyperlink{class_tiny_g_p_s_a5838cec249cb38628734f84defa24b94}{f\+\_\+altitude} ()
+\item 
+float \hyperlink{class_tiny_g_p_s_a4e93f23a509fc50df411d220fe510be0}{f\+\_\+course} ()
+\item 
+float \hyperlink{class_tiny_g_p_s_a176ace2182d5129f3f4fa4d22ee905fb}{f\+\_\+speed\+\_\+knots} ()
+\item 
+float \hyperlink{class_tiny_g_p_s_a7c3c51c4df168ef2b1583a86d8deff34}{f\+\_\+speed\+\_\+mph} ()
+\item 
+float \hyperlink{class_tiny_g_p_s_a50bf6df367912942e294de13170cb1e0}{f\+\_\+speed\+\_\+mps} ()
+\item 
+float \hyperlink{class_tiny_g_p_s_a9cfc388eba14bd0d833958970b68763c}{f\+\_\+speed\+\_\+kmph} ()
+\item 
+void \hyperlink{class_tiny_g_p_s_a12cb37c1f14fd784558932a1bc572bbb}{stats} (unsigned long $\ast$chars, unsigned short $\ast$good\+\_\+sentences, unsigned short $\ast$failed\+\_\+cs)
+\end{DoxyCompactItemize}
+\subsection*{Métodos públicos estáticos}
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{class_tiny_g_p_s_a50ef8dcc83a2f05ad9f1a64f5f2495be}{library\+\_\+version} ()
+\item 
+static float \hyperlink{class_tiny_g_p_s_a5280f59c83069e5113d85d82a1f2b510}{distance\+\_\+between} (float lat1, float long1, float lat2, float long2)
+\item 
+static float \hyperlink{class_tiny_g_p_s_a0655fb2ba390b299252c09779f4472fb}{course\+\_\+to} (float lat1, float long1, float lat2, float long2)
+\item 
+static const char $\ast$ \hyperlink{class_tiny_g_p_s_a8aeef91f9559578d0a0fbc7482adcb17}{cardinal} (float \hyperlink{class_tiny_g_p_s_adbc4a27bc7a804b3f967b15b6091d715}{course})
+\end{DoxyCompactItemize}
+\subsection*{Atributos públicos estáticos}
+\begin{DoxyCompactItemize}
+\item 
+static const float \hyperlink{class_tiny_g_p_s_a401ec11086980f528e2f764bf781921a}{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+A\+N\+G\+LE} = 1000.\+0
+\item 
+static const float \hyperlink{class_tiny_g_p_s_aac690d54d26195fd0c3b0bad517ee30c}{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+A\+L\+T\+I\+T\+U\+DE} = 1000000.\+0
+\item 
+static const float \hyperlink{class_tiny_g_p_s_a6cc8eac7258e9263665fabaa03380f97}{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+S\+P\+E\+ED} = -\/1.\+0
+\end{DoxyCompactItemize}
+
+
+\subsection{Descripción detallada}
+
+
+Definición en la línea 43 del archivo Tiny\+G\+P\+S.\+h.
+
+
+
+\subsection{Documentación de las enumeraciones miembro de la clase}
+\mbox{\Hypertarget{class_tiny_g_p_s_adefa8554723aa8802edacd6094366f6f}\label{class_tiny_g_p_s_adefa8554723aa8802edacd6094366f6f}} 
+\subsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+\begin{DoxyEnumFields}{Valores de enumeraciones}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+GE@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+GE}!Tiny\+G\+PS@{Tiny\+G\+PS}}\index{Tiny\+G\+PS@{Tiny\+G\+PS}!G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+GE@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+GE}}}\mbox{\Hypertarget{class_tiny_g_p_s_adefa8554723aa8802edacd6094366f6fa79f64b88d2e9b3782612fed695d4c1a7}\label{class_tiny_g_p_s_adefa8554723aa8802edacd6094366f6fa79f64b88d2e9b3782612fed695d4c1a7}} 
+G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+GE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+N\+G\+LE@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+N\+G\+LE}!Tiny\+G\+PS@{Tiny\+G\+PS}}\index{Tiny\+G\+PS@{Tiny\+G\+PS}!G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+N\+G\+LE@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+N\+G\+LE}}}\mbox{\Hypertarget{class_tiny_g_p_s_adefa8554723aa8802edacd6094366f6fa4acc5c7138410c0d060b943190bd61fa}\label{class_tiny_g_p_s_adefa8554723aa8802edacd6094366f6fa4acc5c7138410c0d060b943190bd61fa}} 
+G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+N\+G\+LE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+L\+T\+I\+T\+U\+DE@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+L\+T\+I\+T\+U\+DE}!Tiny\+G\+PS@{Tiny\+G\+PS}}\index{Tiny\+G\+PS@{Tiny\+G\+PS}!G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+L\+T\+I\+T\+U\+DE@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+L\+T\+I\+T\+U\+DE}}}\mbox{\Hypertarget{class_tiny_g_p_s_adefa8554723aa8802edacd6094366f6fa11af99b96673aa7b2919f4ce934deb15}\label{class_tiny_g_p_s_adefa8554723aa8802edacd6094366f6fa11af99b96673aa7b2919f4ce934deb15}} 
+G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+L\+T\+I\+T\+U\+DE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+D\+A\+TE@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+D\+A\+TE}!Tiny\+G\+PS@{Tiny\+G\+PS}}\index{Tiny\+G\+PS@{Tiny\+G\+PS}!G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+D\+A\+TE@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+D\+A\+TE}}}\mbox{\Hypertarget{class_tiny_g_p_s_adefa8554723aa8802edacd6094366f6fa69def061d27ec3ad1d6982acd730f3c8}\label{class_tiny_g_p_s_adefa8554723aa8802edacd6094366f6fa69def061d27ec3ad1d6982acd730f3c8}} 
+G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+D\+A\+TE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+T\+I\+ME@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+T\+I\+ME}!Tiny\+G\+PS@{Tiny\+G\+PS}}\index{Tiny\+G\+PS@{Tiny\+G\+PS}!G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+T\+I\+ME@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+T\+I\+ME}}}\mbox{\Hypertarget{class_tiny_g_p_s_adefa8554723aa8802edacd6094366f6fa1b7d220428b8d7bf86f71b82e729b432}\label{class_tiny_g_p_s_adefa8554723aa8802edacd6094366f6fa1b7d220428b8d7bf86f71b82e729b432}} 
+G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+T\+I\+ME&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+P\+E\+ED@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+P\+E\+ED}!Tiny\+G\+PS@{Tiny\+G\+PS}}\index{Tiny\+G\+PS@{Tiny\+G\+PS}!G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+P\+E\+ED@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+P\+E\+ED}}}\mbox{\Hypertarget{class_tiny_g_p_s_adefa8554723aa8802edacd6094366f6fac40011126774b10aaf5f65558f907d33}\label{class_tiny_g_p_s_adefa8554723aa8802edacd6094366f6fac40011126774b10aaf5f65558f907d33}} 
+G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+P\+E\+ED&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+I\+X\+\_\+\+T\+I\+ME@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+I\+X\+\_\+\+T\+I\+ME}!Tiny\+G\+PS@{Tiny\+G\+PS}}\index{Tiny\+G\+PS@{Tiny\+G\+PS}!G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+I\+X\+\_\+\+T\+I\+ME@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+I\+X\+\_\+\+T\+I\+ME}}}\mbox{\Hypertarget{class_tiny_g_p_s_adefa8554723aa8802edacd6094366f6fa13092501160cf2a1c52b517f62cc696e}\label{class_tiny_g_p_s_adefa8554723aa8802edacd6094366f6fa13092501160cf2a1c52b517f62cc696e}} 
+G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+I\+X\+\_\+\+T\+I\+ME&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+A\+T\+E\+L\+L\+I\+T\+ES@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+A\+T\+E\+L\+L\+I\+T\+ES}!Tiny\+G\+PS@{Tiny\+G\+PS}}\index{Tiny\+G\+PS@{Tiny\+G\+PS}!G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+A\+T\+E\+L\+L\+I\+T\+ES@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+A\+T\+E\+L\+L\+I\+T\+ES}}}\mbox{\Hypertarget{class_tiny_g_p_s_adefa8554723aa8802edacd6094366f6fafe0e59ff6f89b52341190684a91cf695}\label{class_tiny_g_p_s_adefa8554723aa8802edacd6094366f6fafe0e59ff6f89b52341190684a91cf695}} 
+G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+A\+T\+E\+L\+L\+I\+T\+ES&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+H\+D\+OP@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+H\+D\+OP}!Tiny\+G\+PS@{Tiny\+G\+PS}}\index{Tiny\+G\+PS@{Tiny\+G\+PS}!G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+H\+D\+OP@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+H\+D\+OP}}}\mbox{\Hypertarget{class_tiny_g_p_s_adefa8554723aa8802edacd6094366f6fa095bfdc8e38a31c6e1796bd58323b346}\label{class_tiny_g_p_s_adefa8554723aa8802edacd6094366f6fa095bfdc8e38a31c6e1796bd58323b346}} 
+G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+H\+D\+OP&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definición en la línea 46 del archivo Tiny\+G\+P\+S.\+h.
+
+
+
+\subsection{Documentación del constructor y destructor}
+\mbox{\Hypertarget{class_tiny_g_p_s_a588e9c23a20a6dfb6289b75408edde9f}\label{class_tiny_g_p_s_a588e9c23a20a6dfb6289b75408edde9f}} 
+\index{Tiny\+G\+PS@{Tiny\+G\+PS}!Tiny\+G\+PS@{Tiny\+G\+PS}}
+\index{Tiny\+G\+PS@{Tiny\+G\+PS}!Tiny\+G\+PS@{Tiny\+G\+PS}}
+\subsubsection{\texorpdfstring{Tiny\+G\+P\+S()}{TinyGPS()}}
+{\footnotesize\ttfamily Tiny\+G\+P\+S\+::\+Tiny\+G\+PS (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definición en la línea 29 del archivo Tiny\+G\+P\+S.\+cpp.
+
+
+
+\subsection{Documentación de las funciones miembro}
+\mbox{\Hypertarget{class_tiny_g_p_s_ade1d05eabfb8ca0f6924ba1a8568b55c}\label{class_tiny_g_p_s_ade1d05eabfb8ca0f6924ba1a8568b55c}} 
+\index{Tiny\+G\+PS@{Tiny\+G\+PS}!altitude@{altitude}}
+\index{altitude@{altitude}!Tiny\+G\+PS@{Tiny\+G\+PS}}
+\subsubsection{\texorpdfstring{altitude()}{altitude()}}
+{\footnotesize\ttfamily long Tiny\+G\+P\+S\+::altitude (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definición en la línea 68 del archivo Tiny\+G\+P\+S.\+h.
+
+\mbox{\Hypertarget{class_tiny_g_p_s_a8aeef91f9559578d0a0fbc7482adcb17}\label{class_tiny_g_p_s_a8aeef91f9559578d0a0fbc7482adcb17}} 
+\index{Tiny\+G\+PS@{Tiny\+G\+PS}!cardinal@{cardinal}}
+\index{cardinal@{cardinal}!Tiny\+G\+PS@{Tiny\+G\+PS}}
+\subsubsection{\texorpdfstring{cardinal()}{cardinal()}}
+{\footnotesize\ttfamily const char $\ast$ Tiny\+G\+P\+S\+::cardinal (\begin{DoxyParamCaption}\item[{float}]{course }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definición en la línea 341 del archivo Tiny\+G\+P\+S.\+cpp.
+
+\mbox{\Hypertarget{class_tiny_g_p_s_adbc4a27bc7a804b3f967b15b6091d715}\label{class_tiny_g_p_s_adbc4a27bc7a804b3f967b15b6091d715}} 
+\index{Tiny\+G\+PS@{Tiny\+G\+PS}!course@{course}}
+\index{course@{course}!Tiny\+G\+PS@{Tiny\+G\+PS}}
+\subsubsection{\texorpdfstring{course()}{course()}}
+{\footnotesize\ttfamily unsigned long Tiny\+G\+P\+S\+::course (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definición en la línea 71 del archivo Tiny\+G\+P\+S.\+h.
+
+\mbox{\Hypertarget{class_tiny_g_p_s_a0655fb2ba390b299252c09779f4472fb}\label{class_tiny_g_p_s_a0655fb2ba390b299252c09779f4472fb}} 
+\index{Tiny\+G\+PS@{Tiny\+G\+PS}!course\+\_\+to@{course\+\_\+to}}
+\index{course\+\_\+to@{course\+\_\+to}!Tiny\+G\+PS@{Tiny\+G\+PS}}
+\subsubsection{\texorpdfstring{course\+\_\+to()}{course\_to()}}
+{\footnotesize\ttfamily float Tiny\+G\+P\+S\+::course\+\_\+to (\begin{DoxyParamCaption}\item[{float}]{lat1,  }\item[{float}]{long1,  }\item[{float}]{lat2,  }\item[{float}]{long2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definición en la línea 321 del archivo Tiny\+G\+P\+S.\+cpp.
+
+\mbox{\Hypertarget{class_tiny_g_p_s_a2a9c14bdb5efa8f3f3b8f5dc6553a284}\label{class_tiny_g_p_s_a2a9c14bdb5efa8f3f3b8f5dc6553a284}} 
+\index{Tiny\+G\+PS@{Tiny\+G\+PS}!crack\+\_\+datetime@{crack\+\_\+datetime}}
+\index{crack\+\_\+datetime@{crack\+\_\+datetime}!Tiny\+G\+PS@{Tiny\+G\+PS}}
+\subsubsection{\texorpdfstring{crack\+\_\+datetime()}{crack\_datetime()}}
+{\footnotesize\ttfamily void Tiny\+G\+P\+S\+::crack\+\_\+datetime (\begin{DoxyParamCaption}\item[{int $\ast$}]{year,  }\item[{byte $\ast$}]{month,  }\item[{byte $\ast$}]{day,  }\item[{byte $\ast$}]{hour,  }\item[{byte $\ast$}]{minute,  }\item[{byte $\ast$}]{second,  }\item[{byte $\ast$}]{hundredths = {\ttfamily 0},  }\item[{unsigned long $\ast$}]{fix\+\_\+age = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Definición en la línea 376 del archivo Tiny\+G\+P\+S.\+cpp.
+
+\mbox{\Hypertarget{class_tiny_g_p_s_a5280f59c83069e5113d85d82a1f2b510}\label{class_tiny_g_p_s_a5280f59c83069e5113d85d82a1f2b510}} 
+\index{Tiny\+G\+PS@{Tiny\+G\+PS}!distance\+\_\+between@{distance\+\_\+between}}
+\index{distance\+\_\+between@{distance\+\_\+between}!Tiny\+G\+PS@{Tiny\+G\+PS}}
+\subsubsection{\texorpdfstring{distance\+\_\+between()}{distance\_between()}}
+{\footnotesize\ttfamily float Tiny\+G\+P\+S\+::distance\+\_\+between (\begin{DoxyParamCaption}\item[{float}]{lat1,  }\item[{float}]{long1,  }\item[{float}]{lat2,  }\item[{float}]{long2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definición en la línea 296 del archivo Tiny\+G\+P\+S.\+cpp.
+
+\mbox{\Hypertarget{class_tiny_g_p_s_ab6b2697b2968dc6a020404795f1aa169}\label{class_tiny_g_p_s_ab6b2697b2968dc6a020404795f1aa169}} 
+\index{Tiny\+G\+PS@{Tiny\+G\+PS}!encode@{encode}}
+\index{encode@{encode}!Tiny\+G\+PS@{Tiny\+G\+PS}}
+\subsubsection{\texorpdfstring{encode()}{encode()}}
+{\footnotesize\ttfamily bool Tiny\+G\+P\+S\+::encode (\begin{DoxyParamCaption}\item[{char}]{c }\end{DoxyParamCaption})}
+
+
+
+Definición en la línea 60 del archivo Tiny\+G\+P\+S.\+cpp.
+
+\mbox{\Hypertarget{class_tiny_g_p_s_a5838cec249cb38628734f84defa24b94}\label{class_tiny_g_p_s_a5838cec249cb38628734f84defa24b94}} 
+\index{Tiny\+G\+PS@{Tiny\+G\+PS}!f\+\_\+altitude@{f\+\_\+altitude}}
+\index{f\+\_\+altitude@{f\+\_\+altitude}!Tiny\+G\+PS@{Tiny\+G\+PS}}
+\subsubsection{\texorpdfstring{f\+\_\+altitude()}{f\_altitude()}}
+{\footnotesize\ttfamily float Tiny\+G\+P\+S\+::f\+\_\+altitude (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definición en la línea 394 del archivo Tiny\+G\+P\+S.\+cpp.
+
+\mbox{\Hypertarget{class_tiny_g_p_s_a4e93f23a509fc50df411d220fe510be0}\label{class_tiny_g_p_s_a4e93f23a509fc50df411d220fe510be0}} 
+\index{Tiny\+G\+PS@{Tiny\+G\+PS}!f\+\_\+course@{f\+\_\+course}}
+\index{f\+\_\+course@{f\+\_\+course}!Tiny\+G\+PS@{Tiny\+G\+PS}}
+\subsubsection{\texorpdfstring{f\+\_\+course()}{f\_course()}}
+{\footnotesize\ttfamily float Tiny\+G\+P\+S\+::f\+\_\+course (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definición en la línea 399 del archivo Tiny\+G\+P\+S.\+cpp.
+
+\mbox{\Hypertarget{class_tiny_g_p_s_a7deea07a7208113c9a37f25cf52d8580}\label{class_tiny_g_p_s_a7deea07a7208113c9a37f25cf52d8580}} 
+\index{Tiny\+G\+PS@{Tiny\+G\+PS}!f\+\_\+get\+\_\+position@{f\+\_\+get\+\_\+position}}
+\index{f\+\_\+get\+\_\+position@{f\+\_\+get\+\_\+position}!Tiny\+G\+PS@{Tiny\+G\+PS}}
+\subsubsection{\texorpdfstring{f\+\_\+get\+\_\+position()}{f\_get\_position()}}
+{\footnotesize\ttfamily void Tiny\+G\+P\+S\+::f\+\_\+get\+\_\+position (\begin{DoxyParamCaption}\item[{float $\ast$}]{latitude,  }\item[{float $\ast$}]{longitude,  }\item[{unsigned long $\ast$}]{fix\+\_\+age = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Definición en la línea 368 del archivo Tiny\+G\+P\+S.\+cpp.
+
+\mbox{\Hypertarget{class_tiny_g_p_s_a9cfc388eba14bd0d833958970b68763c}\label{class_tiny_g_p_s_a9cfc388eba14bd0d833958970b68763c}} 
+\index{Tiny\+G\+PS@{Tiny\+G\+PS}!f\+\_\+speed\+\_\+kmph@{f\+\_\+speed\+\_\+kmph}}
+\index{f\+\_\+speed\+\_\+kmph@{f\+\_\+speed\+\_\+kmph}!Tiny\+G\+PS@{Tiny\+G\+PS}}
+\subsubsection{\texorpdfstring{f\+\_\+speed\+\_\+kmph()}{f\_speed\_kmph()}}
+{\footnotesize\ttfamily float Tiny\+G\+P\+S\+::f\+\_\+speed\+\_\+kmph (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definición en la línea 421 del archivo Tiny\+G\+P\+S.\+cpp.
+
+\mbox{\Hypertarget{class_tiny_g_p_s_a176ace2182d5129f3f4fa4d22ee905fb}\label{class_tiny_g_p_s_a176ace2182d5129f3f4fa4d22ee905fb}} 
+\index{Tiny\+G\+PS@{Tiny\+G\+PS}!f\+\_\+speed\+\_\+knots@{f\+\_\+speed\+\_\+knots}}
+\index{f\+\_\+speed\+\_\+knots@{f\+\_\+speed\+\_\+knots}!Tiny\+G\+PS@{Tiny\+G\+PS}}
+\subsubsection{\texorpdfstring{f\+\_\+speed\+\_\+knots()}{f\_speed\_knots()}}
+{\footnotesize\ttfamily float Tiny\+G\+P\+S\+::f\+\_\+speed\+\_\+knots (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definición en la línea 404 del archivo Tiny\+G\+P\+S.\+cpp.
+
+\mbox{\Hypertarget{class_tiny_g_p_s_a7c3c51c4df168ef2b1583a86d8deff34}\label{class_tiny_g_p_s_a7c3c51c4df168ef2b1583a86d8deff34}} 
+\index{Tiny\+G\+PS@{Tiny\+G\+PS}!f\+\_\+speed\+\_\+mph@{f\+\_\+speed\+\_\+mph}}
+\index{f\+\_\+speed\+\_\+mph@{f\+\_\+speed\+\_\+mph}!Tiny\+G\+PS@{Tiny\+G\+PS}}
+\subsubsection{\texorpdfstring{f\+\_\+speed\+\_\+mph()}{f\_speed\_mph()}}
+{\footnotesize\ttfamily float Tiny\+G\+P\+S\+::f\+\_\+speed\+\_\+mph (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definición en la línea 409 del archivo Tiny\+G\+P\+S.\+cpp.
+
+\mbox{\Hypertarget{class_tiny_g_p_s_a50bf6df367912942e294de13170cb1e0}\label{class_tiny_g_p_s_a50bf6df367912942e294de13170cb1e0}} 
+\index{Tiny\+G\+PS@{Tiny\+G\+PS}!f\+\_\+speed\+\_\+mps@{f\+\_\+speed\+\_\+mps}}
+\index{f\+\_\+speed\+\_\+mps@{f\+\_\+speed\+\_\+mps}!Tiny\+G\+PS@{Tiny\+G\+PS}}
+\subsubsection{\texorpdfstring{f\+\_\+speed\+\_\+mps()}{f\_speed\_mps()}}
+{\footnotesize\ttfamily float Tiny\+G\+P\+S\+::f\+\_\+speed\+\_\+mps (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definición en la línea 415 del archivo Tiny\+G\+P\+S.\+cpp.
+
+\mbox{\Hypertarget{class_tiny_g_p_s_a08a6109f024623c7b5693c344e77e177}\label{class_tiny_g_p_s_a08a6109f024623c7b5693c344e77e177}} 
+\index{Tiny\+G\+PS@{Tiny\+G\+PS}!get\+\_\+datetime@{get\+\_\+datetime}}
+\index{get\+\_\+datetime@{get\+\_\+datetime}!Tiny\+G\+PS@{Tiny\+G\+PS}}
+\subsubsection{\texorpdfstring{get\+\_\+datetime()}{get\_datetime()}}
+{\footnotesize\ttfamily void Tiny\+G\+P\+S\+::get\+\_\+datetime (\begin{DoxyParamCaption}\item[{unsigned long $\ast$}]{date,  }\item[{unsigned long $\ast$}]{time,  }\item[{unsigned long $\ast$}]{age = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Definición en la línea 360 del archivo Tiny\+G\+P\+S.\+cpp.
+
+\mbox{\Hypertarget{class_tiny_g_p_s_a70ba85cc7d84a915b6b1c379471e862b}\label{class_tiny_g_p_s_a70ba85cc7d84a915b6b1c379471e862b}} 
+\index{Tiny\+G\+PS@{Tiny\+G\+PS}!get\+\_\+position@{get\+\_\+position}}
+\index{get\+\_\+position@{get\+\_\+position}!Tiny\+G\+PS@{Tiny\+G\+PS}}
+\subsubsection{\texorpdfstring{get\+\_\+position()}{get\_position()}}
+{\footnotesize\ttfamily void Tiny\+G\+P\+S\+::get\+\_\+position (\begin{DoxyParamCaption}\item[{long $\ast$}]{latitude,  }\item[{long $\ast$}]{longitude,  }\item[{unsigned long $\ast$}]{fix\+\_\+age = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Definición en la línea 351 del archivo Tiny\+G\+P\+S.\+cpp.
+
+\mbox{\Hypertarget{class_tiny_g_p_s_aa8777e03607e275ab8d80f37f08f25ff}\label{class_tiny_g_p_s_aa8777e03607e275ab8d80f37f08f25ff}} 
+\index{Tiny\+G\+PS@{Tiny\+G\+PS}!hdop@{hdop}}
+\index{hdop@{hdop}!Tiny\+G\+PS@{Tiny\+G\+PS}}
+\subsubsection{\texorpdfstring{hdop()}{hdop()}}
+{\footnotesize\ttfamily unsigned long Tiny\+G\+P\+S\+::hdop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definición en la línea 80 del archivo Tiny\+G\+P\+S.\+h.
+
+\mbox{\Hypertarget{class_tiny_g_p_s_a50ef8dcc83a2f05ad9f1a64f5f2495be}\label{class_tiny_g_p_s_a50ef8dcc83a2f05ad9f1a64f5f2495be}} 
+\index{Tiny\+G\+PS@{Tiny\+G\+PS}!library\+\_\+version@{library\+\_\+version}}
+\index{library\+\_\+version@{library\+\_\+version}!Tiny\+G\+PS@{Tiny\+G\+PS}}
+\subsubsection{\texorpdfstring{library\+\_\+version()}{library\_version()}}
+{\footnotesize\ttfamily static int Tiny\+G\+P\+S\+::library\+\_\+version (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definición en la línea 92 del archivo Tiny\+G\+P\+S.\+h.
+
+\mbox{\Hypertarget{class_tiny_g_p_s_a63c3ffc6a8dd02050ec1c57ac11cfbb6}\label{class_tiny_g_p_s_a63c3ffc6a8dd02050ec1c57ac11cfbb6}} 
+\index{Tiny\+G\+PS@{Tiny\+G\+PS}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Tiny\+G\+PS@{Tiny\+G\+PS}}
+\subsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}}
+{\footnotesize\ttfamily \hyperlink{class_tiny_g_p_s}{Tiny\+G\+PS}\& Tiny\+G\+P\+S\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{char}]{c }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definición en la línea 58 del archivo Tiny\+G\+P\+S.\+h.
+
+\mbox{\Hypertarget{class_tiny_g_p_s_ae7664d48de81f316ebf40d7c8d37d1b6}\label{class_tiny_g_p_s_ae7664d48de81f316ebf40d7c8d37d1b6}} 
+\index{Tiny\+G\+PS@{Tiny\+G\+PS}!satellites@{satellites}}
+\index{satellites@{satellites}!Tiny\+G\+PS@{Tiny\+G\+PS}}
+\subsubsection{\texorpdfstring{satellites()}{satellites()}}
+{\footnotesize\ttfamily unsigned short Tiny\+G\+P\+S\+::satellites (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definición en la línea 77 del archivo Tiny\+G\+P\+S.\+h.
+
+\mbox{\Hypertarget{class_tiny_g_p_s_aa1963e08aecceefe643b8aa31a29c0bc}\label{class_tiny_g_p_s_aa1963e08aecceefe643b8aa31a29c0bc}} 
+\index{Tiny\+G\+PS@{Tiny\+G\+PS}!speed@{speed}}
+\index{speed@{speed}!Tiny\+G\+PS@{Tiny\+G\+PS}}
+\subsubsection{\texorpdfstring{speed()}{speed()}}
+{\footnotesize\ttfamily unsigned long Tiny\+G\+P\+S\+::speed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definición en la línea 74 del archivo Tiny\+G\+P\+S.\+h.
+
+\mbox{\Hypertarget{class_tiny_g_p_s_a12cb37c1f14fd784558932a1bc572bbb}\label{class_tiny_g_p_s_a12cb37c1f14fd784558932a1bc572bbb}} 
+\index{Tiny\+G\+PS@{Tiny\+G\+PS}!stats@{stats}}
+\index{stats@{stats}!Tiny\+G\+PS@{Tiny\+G\+PS}}
+\subsubsection{\texorpdfstring{stats()}{stats()}}
+{\footnotesize\ttfamily void Tiny\+G\+P\+S\+::stats (\begin{DoxyParamCaption}\item[{unsigned long $\ast$}]{chars,  }\item[{unsigned short $\ast$}]{good\+\_\+sentences,  }\item[{unsigned short $\ast$}]{failed\+\_\+cs }\end{DoxyParamCaption})}
+
+
+
+Definición en la línea 103 del archivo Tiny\+G\+P\+S.\+cpp.
+
+
+
+\subsection{Documentación de los datos miembro}
+\mbox{\Hypertarget{class_tiny_g_p_s_aac690d54d26195fd0c3b0bad517ee30c}\label{class_tiny_g_p_s_aac690d54d26195fd0c3b0bad517ee30c}} 
+\index{Tiny\+G\+PS@{Tiny\+G\+PS}!G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+A\+L\+T\+I\+T\+U\+DE@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+A\+L\+T\+I\+T\+U\+DE}}
+\index{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+A\+L\+T\+I\+T\+U\+DE@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+A\+L\+T\+I\+T\+U\+DE}!Tiny\+G\+PS@{Tiny\+G\+PS}}
+\subsubsection{\texorpdfstring{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+A\+L\+T\+I\+T\+U\+DE}{GPS\_INVALID\_F\_ALTITUDE}}
+{\footnotesize\ttfamily const float Tiny\+G\+P\+S\+::\+G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+A\+L\+T\+I\+T\+U\+DE = 1000000.\+0\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definición en la línea 54 del archivo Tiny\+G\+P\+S.\+h.
+
+\mbox{\Hypertarget{class_tiny_g_p_s_a401ec11086980f528e2f764bf781921a}\label{class_tiny_g_p_s_a401ec11086980f528e2f764bf781921a}} 
+\index{Tiny\+G\+PS@{Tiny\+G\+PS}!G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+A\+N\+G\+LE@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+A\+N\+G\+LE}}
+\index{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+A\+N\+G\+LE@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+A\+N\+G\+LE}!Tiny\+G\+PS@{Tiny\+G\+PS}}
+\subsubsection{\texorpdfstring{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+A\+N\+G\+LE}{GPS\_INVALID\_F\_ANGLE}}
+{\footnotesize\ttfamily const float Tiny\+G\+P\+S\+::\+G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+A\+N\+G\+LE = 1000.\+0\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definición en la línea 54 del archivo Tiny\+G\+P\+S.\+h.
+
+\mbox{\Hypertarget{class_tiny_g_p_s_a6cc8eac7258e9263665fabaa03380f97}\label{class_tiny_g_p_s_a6cc8eac7258e9263665fabaa03380f97}} 
+\index{Tiny\+G\+PS@{Tiny\+G\+PS}!G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+S\+P\+E\+ED@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+S\+P\+E\+ED}}
+\index{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+S\+P\+E\+ED@{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+S\+P\+E\+ED}!Tiny\+G\+PS@{Tiny\+G\+PS}}
+\subsubsection{\texorpdfstring{G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+S\+P\+E\+ED}{GPS\_INVALID\_F\_SPEED}}
+{\footnotesize\ttfamily const float Tiny\+G\+P\+S\+::\+G\+P\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+\_\+\+S\+P\+E\+ED = -\/1.\+0\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definición en la línea 54 del archivo Tiny\+G\+P\+S.\+h.
+
+
+
+La documentación para esta clase fue generada a partir de los siguientes ficheros\+:\begin{DoxyCompactItemize}
+\item 
+Test/\+G\+P\+S/\+Tiny\+G\+P\+S/\+Tiny\+G\+P\+S/\hyperlink{_tiny_g_p_s_8h}{Tiny\+G\+P\+S.\+h}\item 
+Test/\+G\+P\+S/\+Tiny\+G\+P\+S/\+Tiny\+G\+P\+S/\hyperlink{_tiny_g_p_s_8cpp}{Tiny\+G\+P\+S.\+cpp}\end{DoxyCompactItemize}
