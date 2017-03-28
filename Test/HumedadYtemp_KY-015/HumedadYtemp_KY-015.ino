@@ -14,6 +14,11 @@ byte read_data () {
 return data;
 }
 
+/**
+ * [start_test  Testea la humedad y la temperatura con el múdlo KY-015]
+ * Este es un ejemplo de uso proveniente del fabricante
+ * 
+ */
 void start_test () {
  digitalWrite (DHpin, LOW); // bus down, send start signal
  delay (30); // delay greater than 18ms, so DHT11 start signal can be detected
