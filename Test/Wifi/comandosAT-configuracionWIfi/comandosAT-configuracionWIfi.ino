@@ -21,8 +21,8 @@ void sendData(String comando, const int timeout)
  return;
 }
 void setup()
-  {  Serial.begin(9600);
-     ESP.begin(115200);
+  {  Serial.begin(19200);
+     ESP.begin(19200);
      sendData("AT+CIPMUX=1\r\n",1000); // configurar para multiples conexiones
      sendData("AT+CIPSERVER=1,80\r\n",1000);         // servidor en el puerto 80
   }
