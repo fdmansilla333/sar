@@ -1,7 +1,7 @@
 #include <SoftwareSerial.h>
 SoftwareSerial ESP(3, 2); // RX | TX
 /*
-Enviar comando al esp8266 y verificar la respuesta del módulo, todo esto dentro del tiempo timeout
+Enviar comando al esp8266 y verificar la respuesta del mÃ³dulo, todo esto dentro del tiempo timeout
 */
 void sendData(String comando, const int timeout)
 {
@@ -40,7 +40,7 @@ void setup()
   }
 
 //Este toma de la entrada estandar un 1 para comenzar la prueba de transmitir un buffer de 1kb, en 1 sg, por medio del wifi.
-//De esta forma, se puede terminar la máxima velocidad reduciendo el timeout.
+//De esta forma, se puede terminar la mÃ¡xima velocidad reduciendo el timeout.
 void loop()
   {  
    if(Serial.available()){
@@ -62,3 +62,4 @@ void loop()
     }
    
    
+
