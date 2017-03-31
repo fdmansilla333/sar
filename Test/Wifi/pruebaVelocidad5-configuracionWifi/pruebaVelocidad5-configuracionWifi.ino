@@ -1,8 +1,9 @@
 #include <SoftwareSerial.h>
+
 /**
  * Configuramos el BT a 4500000 y conseguimos una velocidad de 55 KB/sg
  */
-SoftwareSerial ESP(3, 2); // RX | TX
+SoftwareSerial ESP(3,2); // RX | TX
 /*
 Enviar comando al esp8266 y verificar la respuesta del módulo, todo esto dentro del tiempo timeout
 */
@@ -33,12 +34,16 @@ void armarBuffer(char buf[], int inicio, int fin){
 char frame[1024]; //En 2048 se queda con problemas Arduino UNO, por quedarse sin espacio
 //Se configura el serial para imprimir las opciones
 //TODO hay que testear esto con el ESP, a otra velocidad
+
+
+//Probando sin CIOMUX=0, CIPMODE=1, CIPSERVER=0, TCP rafagas de 20ms buffer 2k
 void setup()
   {  Serial.begin(9600);
      Serial.println("Las opciones son: 1 para comenzar y 2 para finalizar");
-     ESP.begin(4500000);
-     sendData("AT+CIPMUX=1\r\n",1000); // configurar para multiples conexiones
-     sendData("AT+CIPSERVER=1,80\r\n",1000);         // servidor en el puerto 80
+     ESP.begin(115200);
+     //sendData("AT+CIPMUX=1\r\n",1000); // configurar para multiples conexiones
+     //sendData("AT+CIPSERVER=1,80\r\n",1000);         // servidor en el puerto 80
+     sendData("AT+CIPMODE=1\r\n",1000);  
     
      
      armarBuffer(frame,0,1023);
@@ -57,7 +62,7 @@ void loop()
         while(!detener){
           //TODO Ver de ir reduciendo el timeout, de tal forma de estresar el enlace.
           long tiempoAnterior=millis();
-          sendData("AT+CIPSEND=0,2047\r\n",0);
+          sendData("AT+CIPSEND=2047\r\n",0);
           ESP.print(frame);
           ESP.print(frame);
           long tiempoActual = millis()-tiempoAnterior;

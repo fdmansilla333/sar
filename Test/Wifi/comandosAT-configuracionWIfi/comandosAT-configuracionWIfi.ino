@@ -21,10 +21,14 @@ void sendData(String comando, const int timeout)
  return;
 }
 void setup()
-  {  Serial.begin(19200);
-     ESP.begin(19200);
-     sendData("AT+CIPMUX=1\r\n",1000); // configurar para multiples conexiones
-     sendData("AT+CIPSERVER=1,80\r\n",1000);         // servidor en el puerto 80
+  {  Serial.begin(9600);
+     ESP.begin(115200);
+     //sendData("AT+CIPMUX=1\r\n",1000); // configurar para multiples conexiones
+     //sendData("AT+CIPSERVER=1,80\r\n",1000);         // servidor en el puerto 80
+     //sendData("AT+CIOBAUD=115200\r\n",2000);         // Configurando velocidad
+     senData("AT+CIPSTART='UDP','192.168.4.2',52485",1000);
+     sendData("AT+CIPSTATUS",1000);
+
   }
 
 void loop()
