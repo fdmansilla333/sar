@@ -1,34 +1,35 @@
-//Example for KY-026 
-//TkkrLab 
-int Led = 13 ;// define LED Interface 
-int buttonpin = 3; // define the flame sensor interface 
-int analoog = A3; // define the flame sensor interface 
-  
-int val ;// define numeric variables val 
-float sensor; //read analoog value 
-  
-void setup () 
-{ 
-  pinMode (Led, OUTPUT) ;// define LED as output interface 
-  pinMode (buttonpin, INPUT) ;// output interface defines the flame sensor 
-  pinMode (analoog, INPUT) ;// output interface defines the flame sensor 
-  Serial.begin(9600); 
-} 
+#include <SoftwareSerial.h>
+/**
+ * [sensor de llamas, Test de funcionamiento del sensor de llamas KY-026]
+ */
+int Led = 13 ;// Definición del pin para el led
+int buttonpin = 3; // Interfaz del sensor de llamas, potenciometro (pin D0)
+int analoog = A3; // Interfaz del sensor de llamas (pin A0)
 
-void loop () 
-{ 
-  sensor = analogRead(analoog); 
-  Serial.println(sensor);  // display tempature 
-  
-  val = digitalRead (buttonpin) ;// digital interface will be assigned a value of 3 to read val 
-    if (val == HIGH) // When the flame sensor detects a signal, LED flashes 
-  { 
-    digitalWrite (Led, HIGH); 
-  } 
-  else 
-  { 
-    digitalWrite (Led, LOW); 
-  } 
-  delay(1000); 
-} 
-   
+int val ;// define numeric variables val
+float sensor; //read analoog value
+
+void setup ()
+{
+  pinMode (Led, OUTPUT) ;// Definimos a led como salida
+  pinMode (buttonpin, INPUT) ;// Potenciometro como entrada
+  pinMode (analoog, INPUT) ;// Señal de llamas como entrada
+  Serial.begin(9600);
+}
+
+void loop ()
+{
+  sensor = analogRead(analoog);
+  Serial.println(sensor);  // Muestra la temperatura
+
+  val = digitalRead (buttonpin) ;// le asigno a val la lectura dada
+    if (val == HIGH) // Cuando se detecte llama se enciende el led
+  {
+    digitalWrite (Led, HIGH);
+  }
+  else
+  {
+    digitalWrite (Led, LOW);
+  }
+  delay(1000);
+}
