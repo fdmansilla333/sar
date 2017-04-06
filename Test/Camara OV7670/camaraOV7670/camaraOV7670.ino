@@ -9,6 +9,7 @@
 #include <util/twi.h>
 #include <util/delay.h>
 #include <avr/pgmspace.h>
+#include <SoftwareSerial.h>
 
 #define F_CPU 16000000UL
 #define vga   0
@@ -553,8 +554,10 @@ void arduinoUnoInut(void) {
   TWBR = 72;//set to 100khz
   
     //enable serial
-  UBRR0H = 0;
-  UBRR0L = 1;//0 = 2M baud rate. 1 = 1M baud. 3 = 0.5M. 7 = 250k 207 is 9600 baud rate.
+  //UBRR0H = 0; //High -------- INVESTIGAR, buscar como UART o USART de Arduino
+  //UBRR0L = 1;//Low --------- 0 = 2M baud rate. 1 = 1M baud. 3 = 0.5M. 7 = 250k 207 is 9600 baud rate.
+
+  UBRR0 = 103;
   UCSR0A |= 2;//double speed aysnc
   UCSR0B = (1 << RXEN0) | (1 << TXEN0);//Enable receiver and transmitter
   UCSR0C = 6;//async 1 stop bit 8bit char no parity bits
@@ -572,7 +575,7 @@ void StringPgm(const char * str){
 static void captureImg(uint16_t wg, uint16_t hg){
   uint16_t y, x;
 
-  StringPgm(PSTR("*RDY*"));
+  //StringPgm(PSTR("*RDY*"));
 
   while (!(PIND & 8));//wait for high
   while ((PIND & 8));//wait for low
@@ -583,7 +586,8 @@ static void captureImg(uint16_t wg, uint16_t hg){
       //while (!(PIND & 256));//wait for high
     while (x--){
       while ((PIND & 4));//wait for low
-            UDR0 = (PINC & 15) | (PIND & 240);
+            //UDR0 = (PINC & 15) | (PIND & 240);
+            UDR0 = 'A';
           while (!(UCSR0A & (1 << UDRE0)));//wait for byte to transmit
       while (!(PIND & 4));//wait for high
       while ((PIND & 4));//wait for low
@@ -595,6 +599,7 @@ static void captureImg(uint16_t wg, uint16_t hg){
 }
 
 void setup(){
+  //Serial.begin(9600);
   arduinoUnoInut();
   camInit();
   setRes();
@@ -602,7 +607,11 @@ void setup(){
   wrReg(0x11, 11); //Earlier it had the value: wrReg(0x11, 12); New version works better for me :) !!!!
 }
 
+unsigned long cont =0;
 
 void loop(){
-  captureImg(320, 240);
+  captureImg(320, 240); // 320x240 formato por defecto
+  //delay(1000);
+  cont++;
+  Serial.println("<--------------------------------------------"+String(cont)+"-------------------------------------------->");
 }
