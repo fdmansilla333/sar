@@ -595,11 +595,11 @@ static void captureImg(uint16_t wg, uint16_t hg){
 }
 
 void setup(){
-  arduinoUnoInut();
-  camInit();
-  setRes();
-  setColor();
-  wrReg(0x11, 11); //Earlier it had the value: wrReg(0x11, 12); New version works better for me :) !!!!
+  arduinoUnoInut(); //Damian
+  camInit(); //Agustin
+  setRes(); //Damian
+  setColor(); //Agustin
+  wrReg(0x11, 11); //Damian- Earlier it had the value: wrReg(0x11, 12); New version works better for me :) !!!!
 }
 
 
