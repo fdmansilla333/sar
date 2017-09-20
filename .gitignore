@@ -1,3 +1,5 @@
+#Ignorar librerias del node
+node_modules/
 # Built application files
 *.apk
 *.ap_

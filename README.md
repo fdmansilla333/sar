@@ -2,6 +2,8 @@
 Sistema Autónomo Robótico
 
 Autores:
+->Mansilla Damián
+->Schlapp Agustin
 
-Schlapp Agustin
-Mansilla Damián
+Directorio Test
+Se encuentran las pruebas realizadas con su respectivos módulos
