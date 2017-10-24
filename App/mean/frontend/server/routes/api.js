@@ -1,3 +1,4 @@
+//https://coursetro.com/posts/code/84/Setting-up-an-Angular-4-MEAN-Stack-(Tutorial)
 const express = require('express');
 const router = express.Router();
 const MongoClient = require('mongodb').MongoClient;
@@ -26,7 +27,6 @@ let response = {
     message: null
 };
 
-// Get users
 router.get('/temperaturas', (req, res) => {
     console.log('Entrando a temperaturas');
     connection((db) => {
@@ -42,5 +42,30 @@ router.get('/temperaturas', (req, res) => {
             });
     });
 });
+
+/**
+ * Implementar con constantes...
+ * Estos metodos deben ser atomicos y son los que requiere el movimiento
+ */
+console.log('otros meotdos');
+router.get('/arriba', (req,res) => {
+    console.log('Accionando arriba');
+    res.json("ok");
+});
+
+router.get('/izquierda', (req,res) => {
+    console.log('Accionando izquierda');
+    res.json("ok");
+});
+router.get('/derecha', (req,res) => {
+    console.log('Accionando derecha');
+    res.json("ok");
+});
+router.get('/abajo', (req,res) => {
+    console.log('Accionando abajo');
+    res.json("ok");
+    
+});
+
 
 module.exports = router;

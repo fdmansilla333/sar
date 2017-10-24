@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
 import { TemperaturaService } from './temperatura.service';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { TemperaturaService } from './temperatura.service';
   imports: [
     BrowserModule,
     HttpModule,
+    NgbModule.forRoot(),
   ],
   providers: [TemperaturaService],
   bootstrap: [AppComponent]
