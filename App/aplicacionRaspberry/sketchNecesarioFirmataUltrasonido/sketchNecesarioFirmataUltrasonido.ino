@@ -1,3 +1,4 @@
+
 /*
  * Firmata is a generic protocol for communicating with microcontrollers
  * from software on a host computer. It is intended to work with
@@ -25,6 +26,7 @@
 #include <Servo.h>
 #include <Wire.h>
 #include <Firmata.h>
+#include <OneWire.h>
 
 #define I2C_WRITE B00000000
 #define I2C_READ B00001000
