@@ -104,13 +104,16 @@ board.on("ready", function () {
         motor2.forward(255);
         motor3.forward(255);
         motor4.forward(255);
-        board.wait(1000, function () {
+        /*board.wait(1000, function () {
             console.log('Fin arriba');
             motor1.stop();
             motor2.stop();
             motor3.stop();
             motor4.stop();
-        });
+        });*/
+        res.json("ok");
+
+        
 
 
     });
@@ -118,48 +121,49 @@ board.on("ready", function () {
     router.get('/izquierda', (req, res) => {
         console.log('Accionando izquierda');
         res.json("ok");
-        motor1.reverse(255);
-        motor2.forward(255);
+        motor1.forward(255);
+        motor2.reverse(255);
         motor3.forward(255);
         motor4.reverse(255);
-        board.wait(1000, function () {
+        /*board.wait(1000, function () {
             console.log('Fin izquierda');
             motor1.stop();
             motor2.stop();
             motor3.stop();
             motor4.stop();
-        });
+        });*/
     });
 
     router.get('/derecha', (req, res) => {
         console.log('Accionando derecha');
-        motor1.forward(255);
-        motor2.reverse(255);
+        motor1.reverse(255);
+        motor2.forward(255);
         motor3.reverse(255);
         motor4.forward(255);
-        board.wait(1000, function () {
+       /* board.wait(1000, function () {
             console.log('Fin derecha');
             motor1.stop();
             motor2.stop();
             motor3.stop();
             motor4.stop();
-        });
+        });*/
         res.json("ok");
     });
     router.get('/abajo', (req, res) => {
         console.log('Accionando abajo');
-        res.json("ok");
+        
         motor1.reverse(255);
         motor2.reverse(255);
         motor3.reverse(255);
         motor4.reverse(255);
-        board.wait(1000, function () {
+        /*board.wait(1000, function () {
             console.log('Fin abajo');
             motor1.stop();
             motor2.stop();
             motor3.stop();
             motor4.stop();
-        });
+        });*/
+        res.json("ok");
 
     });
 
@@ -169,6 +173,7 @@ board.on("ready", function () {
         motor2.stop();
         motor3.stop();
         motor4.stop();
+        res.json("ok");
     });
 });
 
