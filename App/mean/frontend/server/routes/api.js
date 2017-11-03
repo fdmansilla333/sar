@@ -84,6 +84,8 @@ board.on("ready", function () {
         pin: 26
     });
 
+    var distanciaAdelante=0;
+
 
     motor1 = new five.Motor({
         pins: {
