@@ -15,6 +15,7 @@ import { DatePipe } from '@angular/common';
 export class AppComponent {
   titulo = 'Sistema Autónomo Robótico';
   public temperaturas: Temperatura[];
+  public mensaje: String= '';
   constructor(public service: TemperaturaService, public servicioApp: ServicioAplicacion) {
     service.getTemperaturas().subscribe(res => {console.log(res); this.temperaturas = res; }, error => console.log(error), () => {
       console.log('Finalizo la solicitud de temperaturas');
@@ -28,7 +29,7 @@ export class AppComponent {
 
   public arriba() {
     console.log('arriba...');
-    this.servicioApp.enviarEvento('arriba').subscribe();
+    this.servicioApp.enviarEvento('arriba').subscribe(res => this.mensaje = res.error);
   }
 
   public izquierda() {
@@ -44,4 +45,6 @@ export class AppComponent {
     console.log('Stop');
     this.servicioApp.enviarEvento('stop').subscribe();
   }
+
+
 }
