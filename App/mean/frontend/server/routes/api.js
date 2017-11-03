@@ -127,13 +127,13 @@ board.on("ready", function () {
     // Si se generan modificaciones en la distancia de objetos, paran o avanzan los motores
     proximityAdelante.on("change", function () {
         // console.log("Entro a change", cont);
-        proximity.on("data", function () {
-            console.log("  cm  : ", this.cm);
+        /*proximityAdelante.on("data", function () {
+            //console.log("  cm  : ", this.cm);
             // console.log("Entro a data");
-        });
-        cont++;
+        });*/
+        //cont++;
 
-        if (proximity.cm <= MINIMODISTANCIA) {
+        if (proximityAdelante.cm <= MINIMODISTANCIA) {
 
             stop();
         }
@@ -142,6 +142,7 @@ board.on("ready", function () {
 
     router.get('/arriba', (req, res) => {
         console.log('Accionando arriba');
+	if (proximityAdelante.cm > MINIMODISTANCIA){
         motor1.forward(255);
         motor2.forward(255);
         motor3.forward(255);
@@ -153,7 +154,10 @@ board.on("ready", function () {
             motor3.stop();
             motor4.stop();
         });*/
-        res.json("ok");
+	res.json("ok");
+	}else{
+        res.json("{'error':'objeto adelante'}");
+	}
 
 
 
