@@ -53,115 +53,123 @@ router.get('/temperaturas', (req, res) => {
  * Implementar con constantes...
  * Estos metodos deben ser atomicos y son los que requiere el movimiento
  */
- 
- 
+
+
 console.log('otros metodos');
 
 var board = new five.Board();
-		
+
 board.on("ready", function () {
-	//Se enciende la placa
-	var motor1;
-	var motor2;
-	var motor3;
-	var motor4;
-	
-   motor1 = new five.Motor({
-      pins: {
-        pwm: 10,
-        dir: 7,
-        cdir: 6,
-      }
+    //Se enciende la placa
+    var motor1;
+    var motor2;
+    var motor3;
+    var motor4;
+
+    motor1 = new five.Motor({
+        pins: {
+            pwm: 10,
+            dir: 7,
+            cdir: 6,
+        }
     });
 
     motor2 = new five.Motor({
-      pins: {
-        pwm: 11,
-        dir: 8,
-        cdir: 9,
-      }
+        pins: {
+            pwm: 11,
+            dir: 8,
+            cdir: 9,
+        }
     });
 
     motor3 = new five.Motor({
-      pins: {
-        pwm: 13,
-        dir: 5,
-        cdir: 4,
-      }
+        pins: {
+            pwm: 13,
+            dir: 5,
+            cdir: 4,
+        }
     });
 
     motor4 = new five.Motor({
-      pins: {
-        pwm: 12,
-        dir: 2,
-        cdir: 3,
-      }
+        pins: {
+            pwm: 12,
+            dir: 2,
+            cdir: 3,
+        }
     });
 
-router.get('/arriba', (req,res) => {
-	  console.log('Accionando arriba');
-    	motor1.forward(255);
-		motor2.forward(255);
-		motor3.forward(255);
-		motor4.forward(255);  
-		board.wait(1000, function () {
-			console.log('Fin arriba');
-			motor1.stop();
-			motor2.stop();
-			motor3.stop();
-			motor4.stop();
-		});
-		
-    
-});
-    
-router.get('/izquierda', (req,res) => {
-    console.log('Accionando izquierda');
-    res.json("ok");
-    	motor1.reverse(255);
-		motor2.forward(255);
-		motor3.forward(255);
-		motor4.reverse(255);  
-		board.wait(1000, function () {
-			console.log('Fin izquierda');
-			motor1.stop();
-			motor2.stop();
-			motor3.stop();
-			motor4.stop();
-		});
-});
-
-router.get('/derecha', (req,res) => {
-    console.log('Accionando derecha');
+    router.get('/arriba', (req, res) => {
+        console.log('Accionando arriba');
         motor1.forward(255);
-		motor2.reverse(255);
-		motor3.reverse(255);
-		motor4.forward(255);  
-		board.wait(1000, function () {
-			console.log('Fin derecha');
-			motor1.stop();
-			motor2.stop();
-			motor3.stop();
-			motor4.stop();
-		});
-    res.json("ok");
-});
-router.get('/abajo', (req,res) => {
-    console.log('Accionando abajo');
-    res.json("ok");
+        motor2.forward(255);
+        motor3.forward(255);
+        motor4.forward(255);
+        board.wait(1000, function () {
+            console.log('Fin arriba');
+            motor1.stop();
+            motor2.stop();
+            motor3.stop();
+            motor4.stop();
+        });
+
+
+    });
+
+    router.get('/izquierda', (req, res) => {
+        console.log('Accionando izquierda');
+        res.json("ok");
         motor1.reverse(255);
-		motor2.reverse(255);
-		motor3.reverse(255);
-		motor4.reverse(255);  
-		board.wait(1000, function () {
-			console.log('Fin abajo');
-			motor1.stop();
-			motor2.stop();
-			motor3.stop();
-			motor4.stop();
-		});
-    
-});
+        motor2.forward(255);
+        motor3.forward(255);
+        motor4.reverse(255);
+        board.wait(1000, function () {
+            console.log('Fin izquierda');
+            motor1.stop();
+            motor2.stop();
+            motor3.stop();
+            motor4.stop();
+        });
+    });
+
+    router.get('/derecha', (req, res) => {
+        console.log('Accionando derecha');
+        motor1.forward(255);
+        motor2.reverse(255);
+        motor3.reverse(255);
+        motor4.forward(255);
+        board.wait(1000, function () {
+            console.log('Fin derecha');
+            motor1.stop();
+            motor2.stop();
+            motor3.stop();
+            motor4.stop();
+        });
+        res.json("ok");
+    });
+    router.get('/abajo', (req, res) => {
+        console.log('Accionando abajo');
+        res.json("ok");
+        motor1.reverse(255);
+        motor2.reverse(255);
+        motor3.reverse(255);
+        motor4.reverse(255);
+        board.wait(1000, function () {
+            console.log('Fin abajo');
+            motor1.stop();
+            motor2.stop();
+            motor3.stop();
+            motor4.stop();
+        });
+
+    });
+
+    router.get('/stop', (req, res) => {
+        console.log('deteniendo');
+        motor1.stop();
+        motor2.stop();
+        motor3.stop();
+        motor4.stop();
+    });
 });
 
 

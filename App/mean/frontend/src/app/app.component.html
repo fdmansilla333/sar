@@ -13,7 +13,7 @@
         <td></td>
         <td style="background-color:white">
           
-            <img  (click)="arriba()" class="iconos" src="./assets/open-iconic-master.1/svg/chevron-top.svg">
+            <img   (mousedown)="arriba()" (mouseup)="stop()" class="iconos" src="./assets/open-iconic-master.1/svg/chevron-top.svg">
           
         </td>
         <td></td>
@@ -22,13 +22,13 @@
       <tr align="center">
         <td style="background-color:white">
          
-            <img  (click)="izquierda()" class="iconos" src="./assets/open-iconic-master.1/svg/chevron-left.svg">
+            <img  (mousedown)="izquierda()" (mouseup)="stop()" class="iconos" src="./assets/open-iconic-master.1/svg/chevron-left.svg">
           
         </td>
         <td></td>
         <td style="background-color:white">
         
-            <img (click)="derecha()"  class="iconos" src="./assets/open-iconic-master.1/svg/chevron-right.svg">
+            <img  (mousedown)="derecha()" (mouseup)="stop()" class="iconos" src="./assets/open-iconic-master.1/svg/chevron-right.svg">
     
         </td>
 
@@ -37,7 +37,7 @@
         <td></td>
         <td style="background-color:white">
           
-            <img (click)="abajo()" class="iconos" src="./assets/open-iconic-master.1/svg/chevron-bottom.svg">
+            <img  (mousedown)="abajo()" (mouseup)="stop()" class="iconos" src="./assets/open-iconic-master.1/svg/chevron-bottom.svg">
           
         </td>
         <td></td>

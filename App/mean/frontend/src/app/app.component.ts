@@ -40,4 +40,8 @@ export class AppComponent {
     console.log('derecha...');
     this.servicioApp.enviarEvento('derecha').subscribe();
   }
+  public stop() {
+    console.log('Stop');
+    this.servicioApp.enviarEvento('stop').subscribe();
+  }
 }
