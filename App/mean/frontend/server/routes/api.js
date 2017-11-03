@@ -4,6 +4,8 @@ const router = express.Router();
 const MongoClient = require('mongodb').MongoClient;
 const ObjectID = require('mongodb').ObjectID;
 
+const MINIMODISTANCIA = 20;
+
 var five = require("johnny-five");
 //var board = new five.Board;
 var cont = 0;
@@ -66,6 +68,23 @@ board.on("ready", function () {
     var motor3;
     var motor4;
 
+    //Configuro el sensor de proximidad en el pin 22
+    var proximityAdelante = new five.Proximity({
+        controller: "HCSR04",
+        pin: 22
+    });
+
+    var proximityDerecho = new five.Proximity({
+        controller: "HCSR04",
+        pin: 24
+    });
+
+    var proximityIzquierdo = new five.Proximity({
+        controller: "HCSR04",
+        pin: 26
+    });
+
+
     motor1 = new five.Motor({
         pins: {
             pwm: 10,
@@ -98,6 +117,29 @@ board.on("ready", function () {
         }
     });
 
+    function stop() {
+        motor1.stop();
+        motor2.stop();
+        motor3.stop();
+        motor4.stop();
+    }
+
+    // Si se generan modificaciones en la distancia de objetos, paran o avanzan los motores
+    proximityAdelante.on("change", function () {
+        // console.log("Entro a change", cont);
+        proximity.on("data", function () {
+            console.log("  cm  : ", this.cm);
+            // console.log("Entro a data");
+        });
+        cont++;
+
+        if (proximity.cm <= MINIMODISTANCIA) {
+
+            stop();
+        }
+
+    });
+
     router.get('/arriba', (req, res) => {
         console.log('Accionando arriba');
         motor1.forward(255);
@@ -113,7 +155,7 @@ board.on("ready", function () {
         });*/
         res.json("ok");
 
-        
+
 
 
     });
@@ -140,18 +182,18 @@ board.on("ready", function () {
         motor2.forward(255);
         motor3.reverse(255);
         motor4.forward(255);
-       /* board.wait(1000, function () {
-            console.log('Fin derecha');
-            motor1.stop();
-            motor2.stop();
-            motor3.stop();
-            motor4.stop();
-        });*/
+        /* board.wait(1000, function () {
+             console.log('Fin derecha');
+             motor1.stop();
+             motor2.stop();
+             motor3.stop();
+             motor4.stop();
+         });*/
         res.json("ok");
     });
     router.get('/abajo', (req, res) => {
         console.log('Accionando abajo');
-        
+
         motor1.reverse(255);
         motor2.reverse(255);
         motor3.reverse(255);
