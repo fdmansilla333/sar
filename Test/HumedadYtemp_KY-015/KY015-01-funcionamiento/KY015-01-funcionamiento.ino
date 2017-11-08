@@ -1,4 +1,4 @@
-int DHpin = 8;
+int DHpin = 28;
 byte dat [5];
 byte read_data () {
  byte data;
