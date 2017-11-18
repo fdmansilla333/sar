@@ -8,16 +8,21 @@ app.get('/', function (req, res) {
   var board = new five.Board();
 
   board.on("ready", function () {
-    //Se enciende la placa
-    var sensor = new five.Sensor.Digital(8);
 
-    sensor.on("data", function () {
-      console.log("Sensor : ", this.value);
+    var temperature = new five.Thermometer({
+      pin: "A0"
     });
 
-  }); //Fin de ready
+    temperature.on("data", function () {
+      console.log("celsius: %d", this.C);
+      console.log("fahrenheit: %d", this.F);
+      console.log("kelvin: %d", this.K);
+    });
+  });
+
 });
 
 app.listen(3000, function () {
   console.log('Pone el puerto 3000!');
 });
+

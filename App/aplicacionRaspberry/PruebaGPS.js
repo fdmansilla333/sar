@@ -15,13 +15,13 @@ app.get('/', function (req, res) {
      */
     var gps = new five.GPS({
       pins: {
-        rx: 52,
-        tx: 53,
+        rx: 15,
+        tx: 14,
       }
     });
 
     // If latitude, longitude change log it
-    gps.on("change", function () {
+    gps.on("ready", function () {
       console.log("position");
       console.log("  latitude   : ", this.latitude);
       console.log("  longitude  : ", this.longitude);
@@ -36,6 +36,9 @@ app.get('/', function (req, res) {
       console.log("--------------------------------------");
     });
     console.log("Sin cambios");
+    console.log(gps.latitude);
+    console.log(gps.longitude);
+    console.log(gps.altitude);
   });
 });
 

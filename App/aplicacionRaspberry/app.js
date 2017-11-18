@@ -61,14 +61,14 @@ app.get('/', function (req, res) {
       }
     });
 
-
+    console.log('Avance');
     motor1.forward(255);
     motor2.forward(255);
     motor3.forward(255);
     motor4.forward(255);  
     
     board.wait(2000, function () {
-      console.log('Fin forward');
+      console.log('Fin avance');
       motor1.stop();
       motor2.stop();
       motor3.stop();
