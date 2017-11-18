@@ -23,15 +23,15 @@ app.get('/', function (req, res) {
       pin: 26
     });
 
-    proximity1.on("data", function () {
+    proximity1.on("change", function () {
       console.log("Sensor centro(1) cm  : ", this.cm);
     });
 
-    proximity2.on("data", function () {
+    proximity2.on("change", function () {
       console.log("Sensor derecho(2) cm  : ", this.cm);
     });
 
-    proximity3.on("data", function () {
+    proximity3.on("change", function () {
       console.log("Sensor izquierdo(3) cm  : ", this.cm);
     });
     /*
