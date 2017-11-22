@@ -1,6 +1,6 @@
 import { ServicioAplicacion } from './servicio';
 import { Component } from '@angular/core';
-import {TemperaturaService} from './temperatura.service';
+import { TemperaturaService } from './temperatura.service';
 import { Temperatura } from './Temperatura';
 
 import { DatePipe } from '@angular/common';
@@ -15,9 +15,9 @@ import { DatePipe } from '@angular/common';
 export class AppComponent {
   titulo = 'Sistema Autónomo Robótico';
   public temperaturas: Temperatura[];
-  public mensaje: String= '';
+  public mensaje: String = '';
   constructor(public service: TemperaturaService, public servicioApp: ServicioAplicacion) {
-    service.getTemperaturas().subscribe(res => {console.log(res); this.temperaturas = res; }, error => console.log(error), () => {
+    service.getTemperaturas().subscribe(res => { console.log(res); this.temperaturas = res; }, error => console.log(error), () => {
       console.log('Finalizo la solicitud de temperaturas');
     });
   }
@@ -29,7 +29,10 @@ export class AppComponent {
 
   public arriba() {
     console.log('arriba...');
-    this.servicioApp.enviarEvento('arriba').subscribe(res => this.mensaje = res.error);
+    this.servicioApp.enviarEvento('arriba').subscribe(res => this.mensaje = res.json(), error => console.log(error), () => {
+      console.log(this.mensaje);
+    });
+
   }
 
   public izquierda() {
