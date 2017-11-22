@@ -59,29 +59,44 @@ router.get('/temperaturas', (req, res) => {
 
 console.log('otros metodos');
 
-var board = new five.Board();
+//var board = new five.Board();
 
-board.on("ready", function () {
+  var ports = [{ id: "mega", port: "/dev/ttyACM0" },
+  { id: "nano", port: "/dev/ttyUSB0" }
+  ];
+
+new five.Boards(ports).on("ready", function () {
     //Se enciende la placa
     var motor1;
     var motor2;
     var motor3;
     var motor4;
+    
+    //Configuro el sensor de temperatura
+    var thermometer = new five.Thermometer({
+      controller: "DS18B20",
+      pin: 2,
+      board: this.byId("nano")
+    });
+
 
     //Configuro el sensor de proximidad en el pin 22
     var proximityAdelante = new five.Proximity({
         controller: "HCSR04",
-        pin: 22
+        pin: 22,
+        board: this.byId("mega")
     });
 
     var proximityDerecho = new five.Proximity({
         controller: "HCSR04",
-        pin: 24
+        pin: 24,
+        board: this.byId("mega")
     });
 
     var proximityIzquierdo = new five.Proximity({
         controller: "HCSR04",
-        pin: 26
+        pin: 26,
+        board: this.byId("mega")
     });
 
     var distanciaAdelante=0;
@@ -92,6 +107,7 @@ board.on("ready", function () {
             pwm: 10,
             dir: 7,
             cdir: 6,
+            board: this.byId("mega")
         }
     });
 
@@ -100,6 +116,7 @@ board.on("ready", function () {
             pwm: 11,
             dir: 8,
             cdir: 9,
+            board: this.byId("mega")
         }
     });
 
@@ -108,6 +125,7 @@ board.on("ready", function () {
             pwm: 13,
             dir: 5,
             cdir: 4,
+            board: this.byId("mega")
         }
     });
 
@@ -116,6 +134,7 @@ board.on("ready", function () {
             pwm: 12,
             dir: 2,
             cdir: 3,
+            board: this.byId("mega")
         }
     });
 
@@ -125,6 +144,25 @@ board.on("ready", function () {
         motor3.stop();
         motor4.stop();
     }
+    
+    //Muestro la temperatura
+    thermometer.on("change", function () {
+      //console.log(this.celsius + "°C");
+
+
+		connection((db) => {
+        		db.collection('temperatura')
+            		.insert({"temperatura":this.celsius, "fecha": new Date()})
+               .then((temperaturas) => {
+                console.log('Insertando temperatura');
+            })
+            .catch((err) => {
+                console.log('Error al insertar');
+            });
+    });
+	//db.collection('temperatura').insert({"valor":this.celsius, "fecha": new Date()});
+       //console.log("0x" + this.address.toString(16));
+    });
 
     // Si se generan modificaciones en la distancia de objetos, paran o avanzan los motores
     proximityAdelante.on("change", function () {
@@ -160,9 +198,6 @@ board.on("ready", function () {
 	}else{
         res.json("{'error':'objeto adelante'}");
 	}
-
-
-
 
     });
 

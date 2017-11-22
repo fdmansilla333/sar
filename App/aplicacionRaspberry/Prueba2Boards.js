@@ -7,10 +7,15 @@ app.get('/', function (req, res) {
   var five = require("johnny-five");
   //var mega = new five.Board({ port: "COM3" });
   //var nano = new five.Board({ port: "COM10" });
+  /* Puertos windows
   var ports = [{ id: "mega", port: "COM3" },
   { id: "nano", port: "COM10" }
   ];
-
+	*/
+  var ports = [{ id: "mega", port: "/dev/ttyACM0" },
+  { id: "nano", port: "/dev/ttyUSB0" }
+  ];
+  
   new five.Boards(ports).on("ready", function () {
     var thermometer = new five.Thermometer({
       controller: "DS18B20",
