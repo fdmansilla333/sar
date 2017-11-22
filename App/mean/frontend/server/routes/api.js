@@ -171,6 +171,7 @@ new five.Boards(ports).on("ready", function () {
                 console.log('Error al insertar');
             });
     });
+});
 
 	sensor.on("change", function (value) {
       		connection((db) => {
@@ -183,10 +184,7 @@ new five.Boards(ports).on("ready", function () {
 				console.log('Error al insertar valores de mq7');
 			});
 		});
-    
-	//db.collection('temperatura').insert({"valor":this.celsius, "fecha": new Date()});
-       //console.log("0x" + this.address.toString(16));
-    	});
+});
 
     // Si se generan modificaciones en la distancia de objetos, paran o avanzan los motores
     proximityAdelante.on("change", function () {
