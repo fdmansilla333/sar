@@ -14,7 +14,7 @@ export class ServicioAplicacion {
    * @param url Url a enviar el evento [arriba, abajo, izquierda, derecha]
    */
   enviarEvento(url: String): Observable <any> {
-    return this.http.get('http://192.168.1.114:3000/api/' + url);
+    return this.http.get('http://192.168.2.1:3000/api/' + url);
   }
 
 }

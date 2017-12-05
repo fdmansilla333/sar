@@ -13,3 +13,9 @@
     width: 30px;
     height: 30px;
 }
+.imagenArriba{
+    background-image: "./assets/open-iconic-master.1/svg/chevron-top.svg";
+}
+body{
+    color: white;
+}
