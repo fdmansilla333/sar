@@ -50,6 +50,21 @@ router.get('/temperaturas', (req, res) => {
     });
 });
 
+router.get('/monoxidos', (req, res) => {
+    connection((db) => {
+        db.collection('mq7')
+            .find()
+            .toArray()
+            .then((valores) => {
+                response = valores;
+                res.json(response);
+            })
+            .catch((err) => {
+                sendError(err, res);
+            });
+    });
+});
+
 
 /**
  * Implementar con constantes...
@@ -76,7 +91,8 @@ new five.Boards(ports).on("ready", function () {
 	//Se enciende la placa
     var sensor = new five.Sensor({
 	pin: "A0",
-	board: this.byId("mega")
+	board: this.byId("mega"),
+	freq: 1000 //Frecuencia en msg
 
 	});
 
@@ -90,6 +106,48 @@ new five.Boards(ports).on("ready", function () {
       board: this.byId("nano")
     });
 
+var gps = new five.GPS({
+      pins: {
+        rx: 15,
+        tx: 14,
+        board: this.byId("mega")
+      }
+    });
+
+    // If latitude, longitude change log it
+    gps.on("ready", function () {
+      console.log("position");
+      console.log("  latitude   : ", this.latitude);
+      console.log("  longitude  : ", this.longitude);
+      console.log("  altitude   : ", this.altitude);
+      
+      connection((db) => {
+        		db.collection('gps')
+            		.insert({"latitude":this.latitude, "longitude":this.longitude, "altitude":this.altitude, "fecha": new Date()})
+               .then((muestrasGPS) => {
+                console.log('Insertando muestra GPS');
+            })
+            .catch((err) => {
+                console.log('Error al insertar GPS');
+            });
+		});
+    });
+    // If speed, course change log it
+    gps.on("navigation", function () {
+      console.log("navigation");
+      console.log("  speed   : ", this.speed);
+      console.log("  course  : ", this.course);
+      connection((db) => {
+        		db.collection('navegacion')
+            		.insert({"velocidad":this.speed, "curso":this.course, "fecha": new Date()})
+               .then((muestrasGPS) => {
+                console.log('Insertando muestra navegacion');
+            })
+            .catch((err) => {
+                console.log('Error al insertar GPS');
+            });
+		});
+    });
 
     //Configuro el sensor de proximidad en el pin 22
     var proximityAdelante = new five.Proximity({
@@ -165,7 +223,7 @@ new five.Boards(ports).on("ready", function () {
         		db.collection('temperatura')
             		.insert({"temperatura":this.celsius, "fecha": new Date()})
                .then((temperaturas) => {
-                console.log('Insertando temperatura');
+                //console.log('Insertando temperatura');
             })
             .catch((err) => {
                 console.log('Error al insertar');
@@ -176,9 +234,11 @@ new five.Boards(ports).on("ready", function () {
 	sensor.on("change", function (value) {
       		connection((db) => {
 			db.collection('mq7')
-			.insert({"sensorMQ7":value, "fecha": new Date()})
+			.insert({"sensorMQ7":sensor.scaleTo([20,2000]) , "fecha": new Date()})
 			.then((sensorMQ7) => {
 				console.log('Insertando MQ7');
+				console.log(sensor.scaleTo([20,2000]) + 'ppm'); // float
+
 			})
 			.catch((err)=> {
 				console.log('Error al insertar valores de mq7');
@@ -280,6 +340,35 @@ new five.Boards(ports).on("ready", function () {
         motor4.stop();
         res.json("ok");
     });
+    
+    router.get('/ultrasonido', (req,res) => {
+		res.json([{ultrasonidoAdelante:proximityAdelante.cm},
+		{ultrasonidoDerecho: proximityDerecho.cm},
+		{ultrasonidoIzquierdo: proximityIzquierdo.cm}
+		]);
+	});
+	
+	router.get('/gps', (req,res) => {
+		res.json({
+			latitud: gps.latitude,
+			longitud: gps.longitude,
+			altitud: gps.altitude,
+			velocidad: gps.speed,
+			sat: gps.sat,
+			curso: gps.course,
+			tiempo: gps.time
+			
+			});
+	});
+	router.get('/temperatura', (req,res) => {
+		res.json({
+			temperatura: thermometer.celsius, unidad: "celsius"
+		});
+	});
+	
+	router.get('/monoxido', (req, res) => {
+		res.json({monoxido: sensor.scaleTo([20,2000]), unidad: "ppm"});
+	});
 
 });
 
