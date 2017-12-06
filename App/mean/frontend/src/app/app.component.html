@@ -1,22 +1,20 @@
-<!--<div class="row" align="center">
-    <h5>{{titulo}}</h5>
-  </div>-->
 <div class="colorFondo">
-  <div class="row">
-    <div class=".col-4 col-md-4 col-sm-4"> <!--2-->
+  <div class="row" align="center">
+    <div class=".col-2 col-md-2 col-sm-2">
       <app-tablaSensores></app-tablaSensores>
     </div>
-    <div class=".col-4 col-md-4 col-sm-4"> <!--8-->
-      <app-capturaVideo></app-capturaVideo>
-      <app-panelControl></app-panelControl>
+    <div class=".col-8 col-md-8 col-sm-8" >
+        <app-capturaVideo></app-capturaVideo>
+        <br>
+        <app-panelControl></app-panelControl>        
     </div>
-    <div class=".col-4 col-md-4 col-sm-4"> <!--2-->
+    <div class=".col-2 col-md-2 col-sm-2">
       <app-tablaInfo></app-tablaInfo>
     </div>
   </div>
-    
-  <app-panelInferior></app-panelInferior>
-
+  <div style="margin-top: 1%; background-color: grey">
+    <app-panelInferior></app-panelInferior>
+  </div>
   <div *ngIf="this.mensaje?.length > 0">
     <div class="alert alert-info">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
