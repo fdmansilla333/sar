@@ -1,2 +1,4 @@
-<!--<img width="40%" height="30%" src="http://192.168.2.1:8081/">-->
-<img class="img-responsive .center-block" src="../../assets/nosignal2.gif">
+<img *ngIf="solicitarTransmision" src="http://192.168.1.120:8081/">
+<img  *ngIf="solicitarTransmision === false" class="img-responsive" src="../../assets/nosignal2.gif">
+<br>
+<button type="button" (click)= "activarTransmision()" class="btn btn-info">{{mensajeBoton}}</button>

@@ -1,9 +1,50 @@
-<div class="alert alert-info">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <strong>Zona de muestra de errores:</strong> Problemas...
-</div>
-<div class="alert alert-success">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <strong>Información de sensores:</strong> Sensores...
-</div>
+<div class="panel panel-primary">
+      <div class="panel-heading">
+            <h3 class="panel-title">Novedades</h3>
+      </div>
+      <div class="panel-body">
+            <div *ngIf="deteccionColision()" class="alert alert-danger">
+                  <strong>Peligro Ultrasonidos</strong> {{mensajeColision}}
+            </div>
+            <div *ngIf="deteccionColision() == false" class="alert alert-info">
+                  <strong>Ultrasonidos OK</strong> {{mensajeColision}}
+            </div>
 
+
+            <div *ngIf="monoxido < 500" class="alert alert-info">
+
+                  <strong>Monóxido normal</strong> No se excede el nivel carboxihemoglobina del 2.5 %
+            </div>
+
+            <div *ngIf="monoxido >= 500 && monoxido < 800" class="alert alert-warning">
+
+                  <strong>Monóxido precaución</strong> Después de 4-5 horas se puede observar un fuerte dolor de cabeza, incoordinación
+                  muscular, debilidad, vómitos y colapso
+            </div>
+
+
+            <div *ngIf="monoxido >= 800 && monoxido < 1000" class="alert alert-danger">
+
+                  <strong>Monóxido peligro</strong> Después de 3-5 horas se puede observar un fuerte dolor de cabeza, debilidad,
+                  vómitos y colapso
+            </div>
+
+            <div *ngIf="monoxido >= 1000" class="alert alert-danger">
+
+                  <strong>Monóxido peligro!! XD </strong> Después de 2-15 minutos se puede producir la muerte
+            </div>
+
+            <div *ngIf="longitud === 0 && latitud ===0" class="alert alert-success">
+
+                  <strong>Sin señal</strong>
+                  <img class="img-responsive" width="50px" height="50px" src="../../assets/gpsdesconectado.png">
+            </div>
+
+            <div *ngIf="longitud != 0 && latitud != 0" class="alert alert-success">
+
+                  <strong>Señal obtenida</strong>
+                  <img class="img-responsive" width="50px" height="50px" src="../../assets/gpsconectado.png">
+            </div>
+
+           
+      </div>

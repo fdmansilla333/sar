@@ -5,19 +5,23 @@ import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 import { AppComponent } from './app.component';
 import { Temperatura } from './Temperatura';
-
+import { Sensores } from './Sensores';
 
 @Injectable()
 export class ServicioAplicacion {
 
-  constructor(public http: Http, public app: AppComponent) { }
+  public sensores: Sensores;
+
+  constructor(public http: Http, public app: AppComponent) {
+    this.sensores = new Sensores();
+   }
 
   /**
    * Evento que sirve para enviar desde el componente
    * @param url Url a enviar el evento [arriba, abajo, izquierda, derecha]
    */
-  enviarEvento(url: String): Observable <any> {
-    return this.http.get('http://192.168.2.1:3000/api/' + url);
+  enviarEvento(accion: String): Observable <any> {
+    return this.http.get(this.app.rutaBasica + accion);
   }
 
   solicitarTemperaturaActual(): Observable <Temperatura> {
@@ -48,5 +52,14 @@ export class ServicioAplicacion {
     .map(res => res.json());
   }
 
+  pedirImagen(): Observable<boolean> {
+    return this.http.get(this.app.rutaWeb)
+    .map(res => res.json());
+  }
+
+  actualizarValores(muestraSensores: Sensores) {
+    this.sensores = muestraSensores;
+
+  }
 
 }

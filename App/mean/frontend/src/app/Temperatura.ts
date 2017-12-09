@@ -3,7 +3,7 @@ export class Temperatura {
         public valor: Number,
         public fecha: Date,
         public unidad: string,
-        public temperatura: Number,
+        public temperatura: number,
     ) {
 
     }
