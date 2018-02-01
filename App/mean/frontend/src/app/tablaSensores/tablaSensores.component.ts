@@ -6,7 +6,7 @@ import { Gps } from '../Gps';
 import { AppComponent } from '../app.component';
 
 @Component({
-  selector: 'app-tablaSensores',
+  selector: 'app-tabla-sensores',
   templateUrl: './tablaSensores.component.html',
   styleUrls: ['./tablaSensores.component.scss'],
   providers: [ServicioAplicacion]

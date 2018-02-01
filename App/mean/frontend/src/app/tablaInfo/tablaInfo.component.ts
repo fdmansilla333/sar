@@ -1,5 +1,5 @@
 import { ServicioAplicacion } from './../servicio';
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
 import { AppComponent } from '../app.component';
 
@@ -7,9 +7,9 @@ import { AppComponent } from '../app.component';
 
 
 @Component({
-  selector: "app-tablaInfo",
-  templateUrl: "./tablaInfo.component.html",
-  styleUrls: ["./tablaInfo.component.scss"],
+  selector: 'app-tabla-info',
+  templateUrl: './tablaInfo.component.html',
+  styleUrls: ['./tablaInfo.component.scss'],
 })
 
 export class TablaInfoComponent implements OnInit {

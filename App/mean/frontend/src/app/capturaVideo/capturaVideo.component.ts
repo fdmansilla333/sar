@@ -4,7 +4,7 @@ import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
 import { AppComponent } from '../app.component';
 
 @Component({
-  selector: 'app-capturaVideo',
+  selector: 'app-captura-video',
   templateUrl: './capturaVideo.component.html',
   styleUrls: ['./capturaVideo.component.scss'],
   providers: [ServicioAplicacion]

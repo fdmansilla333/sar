@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ServicioAplicacion} from '../servicio';
 
 @Component({
-  selector: 'app-panelControl',
+  selector: 'app-panel-control',
   templateUrl: './panelControl.component.html',
   styleUrls: ['./panelControl.component.scss'],
   providers: [ServicioAplicacion],

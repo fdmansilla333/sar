@@ -1,13 +1,13 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: "app-panelInferior",
-  templateUrl: "./panelInferior.component.html",
-  styleUrls: ["./panelInferior.component.scss"]
+  selector: 'app-panel-inferior',
+  templateUrl: './panelInferior.component.html',
+  styleUrls: ['./panelInferior.component.scss']
 })
 
 export class PanelInferiorComponent implements OnInit {
-  
+
   constructor() {
 
   }

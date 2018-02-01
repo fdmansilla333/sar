@@ -17,6 +17,7 @@ export class AppComponent {
   public temperaturas: Temperatura[];
   public sensoresActuales: Sensores;
   public tiempoDelay;
+  public mensaje= '';
   // public rutaBasica = 'http://192.168.2.1:3000/api/';
   public rutaBasica = 'http://192.168.2.1:3000/api/';
   public rutaWeb = '/web';
