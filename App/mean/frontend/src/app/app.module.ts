@@ -15,6 +15,8 @@ import { PizarraComponent } from './pizarra/pizarra.component';
 import { EstadisticasComponent } from './estadisticas/estadisticas.component';
 import { EncabezadoComponent } from './encabezado/encabezado.component';
 
+import {NgxChartsModule} from '@swimlane/ngx-charts';
+
 const routes: Routes = [
    { path: '', component: PizarraComponent },
    { path: 'estadisticas', component: EstadisticasComponent },
@@ -36,7 +38,8 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     HttpModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    NgxChartsModule
   ],
   providers: [TemperaturaService],
   bootstrap: [AppComponent]
