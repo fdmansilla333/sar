@@ -1,0 +1,18 @@
+
+.ytp-cued-thumbnail-overlay-image {
+    width: 50%;
+    height: 50%;
+}
+
+.campo-chico{
+    width: 30%;
+    height: 30%;
+    
+}
+.iconos{
+    width: 30px;
+    height: 30px;
+}
+.imagenArriba{
+    background-image: "./assets/open-iconic-master.1/svg/chevron-top.svg";
+}

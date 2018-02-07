@@ -1,0 +1,38 @@
+.table {
+    /*width: 50%;*/
+    background-color: black;
+}
+.imagenIzquierda {
+    background-image:url('../../assets/open-iconic-master.1/svg/chevron-left.svg'); 
+    background-repeat: no-repeat; 
+    background-position: center;
+    
+    height: 50px;
+    width: 50px; 
+}
+
+.imagenDerecha {
+    background-image:url('../../assets/open-iconic-master.1/svg/chevron-right.svg'); 
+    background-repeat: no-repeat; 
+    background-position: center;
+    
+    height: 50px;
+    width: 50px;
+}
+
+.imagenAbajo {
+    background-image:url('../../assets/open-iconic-master.1/svg/chevron-bottom.svg'); 
+    background-repeat: no-repeat; 
+    background-position: center;
+    
+    height: 50px;
+    width: 50px;
+}
+
+.imagenArriba {
+    background-image:url('../../assets/open-iconic-master.1/svg/chevron-top.svg'); 
+    background-repeat: no-repeat; 
+    background-position: center;
+    height: 50px;
+    width: 50px;
+}

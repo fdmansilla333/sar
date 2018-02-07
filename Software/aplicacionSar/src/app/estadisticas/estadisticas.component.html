@@ -1,0 +1,55 @@
+<div class="row">
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Estadísticas de Temperatura</h3>
+      </div>
+      <div class="panel-body" align="center">
+        <ngx-charts-heat-map [scheme]="colorScheme" [results]="multi" [legend]="showLegend" [gradient]="gradient" [xAxis]="showXAxis"
+          [yAxis]="showYAxis" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
+          [yAxisLabel]="yAxisLabel" (select)="onSelect($event)">
+        </ngx-charts-heat-map>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Estadísticas de Monóxido de Carbono</h3>
+      </div>
+      <div class="panel-body">
+         <ngx-charts-line-chart
+          [scheme]="LineacolorScheme"
+          [results]="Lineasingle"
+          [gradient]="Lineagradient"
+          [xAxis]="LineashowXAxis"
+          [yAxis]="LineashowYAxis"
+          [legend]="LineashowLegend"
+          [showXAxisLabel]="LineashowXAxisLabel"
+          [showYAxisLabel]="LineashowYAxisLabel"
+          [xAxisLabel]="LineaxAxisLabel"
+          [yAxisLabel]="LineayAxisLabel"
+          (select)="onSelect($event)">
+        </ngx-charts-line-chart> 
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+
+
+<div class="row">
+  
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <label>Ingrese ppm</label><input type="number" name="valorPPM" value="0" [(ngModel)]="valorPPM" (change)="agregarValor()">
+  </div>
+  
+</div>

@@ -1,0 +1,22 @@
+<div class="colorFondo">
+    <div class="row" align="center">
+      <div class=".col-2 col-md-2 col-sm-2">
+        <app-tabla-sensores></app-tabla-sensores>
+      </div>
+      <div class=".col-8 col-md-8 col-sm-8" >
+        <app-captura-video></app-captura-video>
+          <br>
+          <app-panel-control></app-panel-control>        
+      </div>
+      <div class=".col-2 col-md-2 col-sm-2">
+        <app-tabla-info></app-tabla-info>
+      </div>
+    </div>
+
+    <div *ngIf="mensaje?.length > 0">
+      <div class="alert alert-info">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong>Nueva info</strong> {{mensaje}}
+      </div>
+    </div>
+  </div>
