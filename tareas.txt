@@ -1,47 +1,31 @@
 Anexo de pruebas
-cap 1 al 2 unificación + conclusión del 2 (enviar este modulo)
-cap 3 processing (ver firmata) cambiar orden con wiring ver similitud entre wiring y processiong.
 
-Expandir firmata con ejemplos
-
-3.2 ¿Qué es Processing? --> cambiar a historia de arduino
-
-3.5 Entonces Arduino es… --> caractersiticas generales de la plataforma
-
-extractos de codigo monoespaciado (courier)
-
-pasar a pasado (tiempos verbales)
-
-
-Sacar del cap 4 python
-
-
-Front-End  agregar glosario
-
-5.1 ¿Qué son las aplicaciones móviles? (ver si expandir o elimiamr)
-
+cap 3 processing (ver firmata) cambiar orden con wiring ver similitud entre wiring y processiong. (Damián)
+3.2 ¿Qué es Processing? --> cambiar a historia de arduino (Damián)
+3.5 Entonces Arduino es… --> caractersiticas generales de la plataforma (Damián)
+extractos de codigo monoespaciado (courier) (Damián)
+Front-End  agregar glosario (Damián)
+5.1 ¿Qué son las aplicaciones móviles? (ver si expandir o elimiamr) (DAmian)
 “Una aplicación móvil es un programa que se puede descargar y ejecuta desde un dispositivo móvil”
-
-
-sacar en las secciones los signos ?¿ y ...
-
-ver en todos los outros (resumen de capitulo)
-
-Diseño conceptual del sar --> agregar capitulo 2. Agregar dibujo esquema, a nivel general. a nivel servicios
-
-capitulo 7 cambiar ilustración (Ilustración 43 - Remote Wiring de Windows), 
-
-Agregar detalle de como funciona capitulo 7 firmata
-
-Lectura de un pin, analogico, periodico, detalles de la api del protocolo (perspectiva de johnny five)
-
-
-Armar el anexo de las pruebas... con referencias a los titulos y secciones
-
-Capitulo 1 desordenados los objetivos, orden de desarrollo teniendo en cuenta los capitulos
-
 Angular --> cambiar novedades a --> eventos
-agregar emoticones 
+agregar emoticones DAMIAN
 
-usar ieee o apa (ver)
+Expandir firmata con ejemplos(Agustin)
+Sacar del cap 4 python (agustin)
+capitulo 7 cambiar ilustración (Ilustración 43 - Remote Wiring de Windows), (Agustin)
+
+Agregar detalle de como funciona capitulo 7 firmata(Agustin)
+
+Lectura de un pin, analogico, periodico, detalles de la api del protocolo (perspectiva de johnny five)(Agustin)
+
+
+pasar a pasado (tiempos verbales) TODOS
+sacar en las secciones los signos ?¿ y ... (TODOS)
+ver en todos los outros (resumen de capitulo) (TODOS)
+Armar el anexo de las pruebas... con referencias a los titulos y secciones (TODOS)
+usar ieee  (TODOS)
+
+
+
+
 

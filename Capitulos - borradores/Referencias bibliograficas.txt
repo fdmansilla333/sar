@@ -1,0 +1,96 @@
+Capítulo 1
+
+Arduino (s.f.). En Wikipedia. Recuperado el 4 de marzo del 2017 de https://es.wikipedia.org/wiki/Arduino
+Robótica (s.f.). En Wikipedia. Recuperado el 4 de marzo del 2017 de https://es.wikipedia.org/wiki/Rob%C3%B3tica
+Aplicación móvil (s.f.). En Wikipedia. Recuperado el 4 de marzo del 2017 de https://es.wikipedia.org/wiki/Aplicaci%C3%B3n_m%C3%B3vil
+Enrique, C. (2016). Aprendiendo Arduino. Obtenido de 
+https://aprendiendoarduino.wordpress.com
+Inteligencia Artificial un enfoque moderno. Person. Stuart Russell, Peter Norving 2da Ed.
+
+Capítulo 2
+
+https://es.wikipedia.org/wiki/Rob%C3%B3tica
+https://es.wikipedia.org/wiki/Robot
+http://www.robotgroup.com.ar/
+http://www.maestrosdelweb.com/mejores-plataformas-de-hardware-para-proyectos-diy/
+Avances en robótica y visión por computador / coordinador, José André Somolinos Sánchez - Cuenca: Ediciones de la Universidad de Castilla - La mancha, 2002
+Robótica - Manipuladores y robots móviles - Aníbal Ollero Baturone, 2001
+http://www.educacontic.es/blog/robotica-educativa-con-arduino-en-el-aula-de-eso-incubegg-kubo-e-izar-galaktik-mertxe-j-badiola
+
+http://blogs.upm.es/observatoriogate/2017/02/01/arduino-en-la-programacion-y-robotica-educativa/
+
+
+https://www.elconfidencial.com/tecnologia/2015-11-01/raspberry-pi-arduino-como-sacarle-partido-a-los-mini-ordenadores-low-cost_1076718/
+
+http://www.eldiario.es/turing/BBC_micro-bit-utilizaran-escolares-Reino-Unido_0_411209780.html
+
+https://www.linuxadictos.com/raspberry-pi-moodle-una-plataforma-barata-e-learning.html
+
+http://misionesonline.net/2017/11/10/llegaron-los-kit-didacticos-trabajar-la-ensenanza-robotica-las-escuelas-misioneras/
+
+Agregar en Beagle Bone
+https://www.digikey.com/es/articles/techzone/2013/sep/beaglebone-black-brings-arduino-style-connectivity-simplicity-to-embedded-linux
+
+Capítulo 3
+
+https://www.xataka.com/especiales/guia-del-arduinomaniaco-todo-lo-que-necesitas-saber-sobre-arduino
+https://aprendiendoarduino.wordpress.com/2015/03/22/que-es-el-hardware-libre/
+https://es.wikipedia.org/wiki/Arduino
+https://es.wikipedia.org/wiki/Processing
+https://es.wikipedia.org/w/index.php?title=Wiring&oldid=98682099
+30 proyectos con Arduino – Simon Monk – Editorial Estribor
+https://es.wikipedia.org/wiki/Actuador
+https://es.wikipedia.org/wiki/Sensor
+
+Capítulo 4
+https://es.wikipedia.org/wiki/Raspberry_Pi
+https://www.raspberrypi.org/
+http://www.prometec.net/indice-raspberry-pi/
+https://www.raspberryshop.es/accesorios-raspberry-pi.php
+https://raspberryparatorpes.net/
+https://raspberry-pi.xyz/
+
+
+
+Capítulo 5
+https://www.consumidor.ftc.gov/articulos/s0018-aplicaciones-moviles-que-son-y-como-funcionan
+https://es.wikipedia.org/wiki/Aplicaci%C3%B3n_m%C3%B3vil
+https://es.wikipedia.org/wiki/Sistema_operativo_m%C3%B3vil
+http://appdesignbook.com/es/contenidos/las-aplicaciones/
+https://www.lancetalent.com/blog/tipos-de-aplicaciones-moviles-ventajas-inconvenientes/ - melquisedec cruz gtz
+https://www.yeeply.com/blog/apps-en-cualquier-dispositivo-desarrollo-de-aplicaciones-multiplataforma/
+https://developer.android.com/studio/intro/index.html?hl=es-419
+https://es.wikipedia.org/wiki/App_Inventor
+https://software.intel.com/es-es/intel-xdk
+https://es.wikipedia.org/wiki/Intel_XDK
+http://www.phonegapspain.com/que-es-y-como-empezar-con-ionic-framework/
+https://www.desarrolloweb.com/articulos/que-es-ionic2.html
+https://es.wikipedia.org/wiki/Apache_Cordova
+https://cordova.apache.org/docs/en/latest/guide/overview/index.html
+http://es.discovermeteor.com/chapters/introduction/
+http://docs.meteor.com/?_ga=2.115577542.131333140.1496787062-695334936.1496349438#/full/
+https://guide.meteor.com/mobile.html
+https://developer.android.com/studio/index.html?hl=es-419
+https://guide.meteor.com/mobile.html#introduction
+
+Capítulo 6
+https://es.wikipedia.org/wiki/MEAN
+https://www.campusmvp.es/recursos/post/Que-es-el-stack-MEAN-y-como-escoger-el-mejor-para-ti.aspx
+https://es.wikipedia.org/wiki/JSON
+https://es.wikipedia.org/wiki/Angular_(framework)
+https://www.cloudexperto.com/academia/angular2-framework/curso-de-angular-2/
+
+Capítulo 7
+http://johnny-five.io/
+https://github.com/rwaldron/johnny-five
+https://aprendiendoarduino.wordpress.com/2016/03/06/firmata/
+http://untitled.es/arduino-nodejs-johnny-five/
+
+Capítulo 8
+https://es.wikipedia.org/wiki/Python
+https://aprendiendoarduino.wordpress.com/2016/03/06/firmata/
+http://elinux.org/RPi_BCM2835_GPIOs
+https://www.raspberrypi.org/documentation/usage/python/
+Capítulo 11
+http://www.lavrsen.dk/foswiki/bin/view/Motion/WebHome
+https://en.wikipedia.org/wiki/PM2_(software)
