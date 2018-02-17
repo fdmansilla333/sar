@@ -1,9 +1,11 @@
-﻿Anexo de pruebas
-5.1 ¿Qué son las aplicaciones móviles? (ver si expandir o elimiamr) (DAmian)
-“Una aplicación móvil es un programa que se puede descargar y ejecuta desde un dispositivo móvil”
+﻿Damián:
+Anexo de pruebas
 Angular --> cambiar novedades a --> eventos
 agregar emoticones DAMIAN
+Agregar redacción de estadísticas.
 
+
+Agustin:
 Expandir firmata con ejemplos(Agustin)
 Sacar del cap 4 python (agustin)
 capitulo 7 cambiar ilustración (Ilustración 43 - Remote Wiring de Windows), (Agustin)
