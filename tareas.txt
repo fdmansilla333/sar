@@ -1,18 +1,12 @@
-Anexo de pruebas
-
-cap 3 processing (ver firmata) cambiar orden con wiring ver similitud entre wiring y processiong. (Damián)
-3.2 ¿Qué es Processing? --> cambiar a historia de arduino (Damián)
-3.5 Entonces Arduino es… --> caractersiticas generales de la plataforma (Damián)
-extractos de codigo monoespaciado (courier) (Damián)
-Front-End  agregar glosario (Damián)
-5.1 ¿Qué son las aplicaciones móviles? (ver si expandir o elimiamr) (DAmian)
-“Una aplicación móvil es un programa que se puede descargar y ejecuta desde un dispositivo móvil”
+ï»¿Anexo de pruebas
+5.1 Â¿QuÃ© son las aplicaciones mÃ³viles? (ver si expandir o elimiamr) (DAmian)
+â€œUna aplicaciÃ³n mÃ³vil es un programa que se puede descargar y ejecuta desde un dispositivo mÃ³vilâ€
 Angular --> cambiar novedades a --> eventos
 agregar emoticones DAMIAN
 
 Expandir firmata con ejemplos(Agustin)
 Sacar del cap 4 python (agustin)
-capitulo 7 cambiar ilustración (Ilustración 43 - Remote Wiring de Windows), (Agustin)
+capitulo 7 cambiar ilustraciÃ³n (IlustraciÃ³n 43 - Remote Wiring de Windows), (Agustin)
 
 Agregar detalle de como funciona capitulo 7 firmata(Agustin)
 
@@ -20,7 +14,7 @@ Lectura de un pin, analogico, periodico, detalles de la api del protocolo (persp
 
 
 pasar a pasado (tiempos verbales) TODOS
-sacar en las secciones los signos ?¿ y ... (TODOS)
+sacar en las secciones los signos ?Â¿ y ... (TODOS)
 ver en todos los outros (resumen de capitulo) (TODOS)
 Armar el anexo de las pruebas... con referencias a los titulos y secciones (TODOS)
 usar ieee  (TODOS)
