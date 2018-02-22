@@ -1,9 +1,13 @@
   import { Component, OnInit } from '@angular/core';
+import { ServicioAplicacion } from '../servicio';
+import { Temperatura } from '../Temperatura';
+  
 
   @Component({
     selector: 'app-estadisticas',
     templateUrl: './estadisticas.component.html',
-    styleUrls: ['./estadisticas.component.css']
+    styleUrls: ['./estadisticas.component.css'],
+    providers: [ServicioAplicacion]
   })
   export class EstadisticasComponent implements OnInit {
     showXAxis = true;
@@ -115,9 +119,11 @@
 
     valorPPM: number;
 
-    constructor() { }
+    constructor(protected servicio: ServicioAplicacion) { }
 
     ngOnInit() {
+
+      this.servicio.solicitarTodasTemperaturas().subscribe(colTemperaturas => this.cargarEstadisticaTemperatura(colTemperaturas));
     }
 
     onSelect(event) {
@@ -131,6 +137,26 @@
       lista[0].series.push({'name': hoy, 'value': this.valorPPM});
       this.Lineasingle.push(lista[0]);
       console.log(this.Lineasingle);
+    }
+
+    cargarEstadisticaTemperatura(temperaturas: Temperatura[]) {
+      this.multi = [];
+
+      temperaturas.forEach(t => {
+        let obj =  {
+          'name': t.fecha.getUTCDate()  + '/' + t.fecha.getMonth() + 1 + '/' + t.fecha.getFullYear(),
+          'series': [
+            {
+              'name': '18:00',
+              'value': -10
+            },
+            {
+              'name': '19:00',
+              'value': 10
+            }
+          ]
+        };
+      });
     }
 
   }

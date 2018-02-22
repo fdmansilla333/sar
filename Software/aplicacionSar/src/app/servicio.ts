@@ -1,6 +1,7 @@
 import { Gps } from './Gps';
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
+import {HttpClient} from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 import { AppComponent } from './app.component';
@@ -12,7 +13,7 @@ export class ServicioAplicacion {
 
   public sensores: Sensores;
 
-  constructor(public http: Http, public app: AppComponent) {
+  constructor(public http: Http, public http2: HttpClient,  public app: AppComponent) {
     this.sensores = new Sensores();
    }
 
@@ -68,6 +69,10 @@ export class ServicioAplicacion {
 
   reiniciar() {
     return this.http.get(this.app.rutaBasica + 'reiniciar');
+  }
+
+  solicitarTodasTemperaturas(): Observable <Temperatura[]>  {
+    return this.http2.get<Temperatura[]>(this.app.rutaBasica + 'temperaturas');
   }
 
 

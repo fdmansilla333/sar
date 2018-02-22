@@ -1,0 +1,6 @@
+{
+    "/web": {
+       "target": "http://192.168.2.1:8081",
+       "secure": false
+    }
+ }

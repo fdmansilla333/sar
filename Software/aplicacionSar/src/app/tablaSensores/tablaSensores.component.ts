@@ -30,7 +30,7 @@ export class TablaSensoresComponent implements OnInit {
 
     this.servicio.solicitarTemperaturaActual()
       .subscribe(temperatura => {
-        this.temperaturaActual = temperatura.temperatura;
+        this.temperaturaActual = temperatura.valor; // Revisar
       }, error => this.temperaturaActual = 'Error');
     this.servicio.solicitarMonoxidoActual()
       .subscribe(monoxido => this.coActual = monoxido.monoxido, error => this.coActual = 'Error');

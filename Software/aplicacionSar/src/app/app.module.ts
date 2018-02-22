@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
+import {HttpClientModule} from '@angular/common/http';
 
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
@@ -43,7 +44,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     NgxChartsModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [TemperaturaService],
   bootstrap: [AppComponent]
