@@ -9,7 +9,7 @@ export class Sensores {
     public ultrasonidoAdelante: Number;
     public monoxido: Number;
     constructor() {
-        this.temperatura = new Temperatura(null, null, null, null);
+        this.temperatura = new Temperatura(null, null, null);
         this.gps = new Gps();
     }
 

@@ -5,17 +5,21 @@ const MongoClient = require('mongodb').MongoClient;
 const ObjectID = require('mongodb').ObjectID;
 
 const MINIMODISTANCIA = 20;
-var mibd;
 
 
-if (process.env.AMBIENTE == 'DESARROLLO'){
-	console.log('Iniciado desarrollo');
-	var hola=require('./hola');
-	module.exports = hola;
-}else{
-	console.log('Iniciado Test');
-	var placas = require('./placas');
-	module.exports = placas; 
+
+/*Esto es nuevo*/
+
+
+
+if (process.env.AMBIENTE == 'DESARROLLO') {
+    console.log('Iniciado desarrollo');
+    var hola = require('./hola');
+    module.exports = hola;
+} else {
+    console.log('Iniciado Test');
+    var placas = require('./placas');
+    module.exports = placas;
 }
 
 
@@ -25,7 +29,7 @@ var cont = 0;
 const connection = (closure) => {
     return MongoClient.connect('mongodb://localhost:27017/sar', (err, db) => {
         if (err) return console.log(err);
-		closure(db);
+        closure(db);
     });
 };
 
@@ -45,18 +49,30 @@ let response = {
 
 
 router.get('/temperaturas', (req, res) => {
-    console.log('solicitando temperaturas');
+    var lista = [];
     connection((db) => {
         db.collection('temperaturas')
-		    .find()
-            .toArray()
-            .then((temperaturas) => {
-                response = temperaturas;
-                res.json(response);
+            .distinct("fecha").then((fechas) => {
+
+                fechas.forEach(f => {
+                    db.collection("temperaturas")
+                        .find({ "fecha": f }, { "valor": 1, "hora": 1 , "_id":0}).sort({ "fecha":1 , "hora": 1 })
+                        .toArray(function (err, result) {
+                            if (err) throw err;
+                            lista.push({series:result, fecha:f});
+
+                            if(lista.length  === fechas.length) {
+                                res.json(lista);
+                            }
+                           
+                        });
+                });
+              
+               
             })
             .catch((err) => {
                 sendError(err, res);
-            });
+            })
     });
 });
 
@@ -75,11 +91,31 @@ router.get('/monoxidos', (req, res) => {
     });
 });
 
+router.get('/monoxidosActual', (req, res) => {
+    var ahora = new Date();
+    var despues = new Date();
+    despues.setSeconds(ahora.getSeconds() + 5);
+
+    hora1 = ahora.getHours()+':'+ahora.getMinutes()+':'+ahora.getSeconds();
+    hora2 = despues.getHours()+':'+despues.getMinutes()+':'+despues.getSeconds();
+    console.log('Buscando con '+hora1+' y '+hora2);
+   
+    connection((db) => {
+        db.collection('monoxidos')
+        .findOne({ "hora":  {$gte: hora1, $lte: hora2} }, { "valor": 1, "hora": 1 , "_id":0},
+        function (err, result) {
+            if (err) throw err;
+            console.log(result);
+            res.json(result);
+            
+        });
+        
+    });
+});
+
 
 /*
 Se exportan las variables para que sean conocidas por Nodejs
 */
 
 module.exports = router;
-
-

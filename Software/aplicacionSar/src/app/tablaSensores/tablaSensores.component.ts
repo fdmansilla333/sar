@@ -20,6 +20,7 @@ export class TablaSensoresComponent implements OnInit {
   public uIzquierda: any;
   public uAdelante: any;
 
+  public huboError = false;
 
   constructor(public servicio: ServicioAplicacion, public app: AppComponent) {
     this.gps = new Gps();
@@ -27,15 +28,21 @@ export class TablaSensoresComponent implements OnInit {
   }
 
   public solicitarDatosDeSensores() {
-
+    if (!this.huboError) {
     this.servicio.solicitarTemperaturaActual()
       .subscribe(temperatura => {
         this.temperaturaActual = temperatura.valor; // Revisar
-      }, error => this.temperaturaActual = 'Error');
+      }, error => {
+        this.temperaturaActual = 'Error';
+        this.huboError = true;
+      });
     this.servicio.solicitarMonoxidoActual()
-      .subscribe(monoxido => this.coActual = monoxido.monoxido, error => this.coActual = 'Error');
+      .subscribe(monoxido => this.coActual = monoxido.monoxido, error => {
+        this.coActual = 'Error';
+        this.huboError = true;
+      });
     this.servicio.solicitarGpsActual()
-      .subscribe(resGps => {this.gps = resGps; });
+      .subscribe(resGps => {this.gps = resGps; }, error => this.huboError = true);
 
     this.servicio.solicitarUltrasonidosActual()
       .subscribe(ultrasonidos => {
@@ -46,7 +53,9 @@ export class TablaSensoresComponent implements OnInit {
         this.uAdelante = 'Error';
         this.uDerecha = 'Error';
         this.uIzquierda = 'Error';
+        this.huboError = true;
       });
+    }
 
       /**Paso de parametros al padre 
        * TODO cambiar el acceso a tabla informacion para no pasar por el padre

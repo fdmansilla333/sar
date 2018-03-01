@@ -7,6 +7,8 @@ import { Observable } from 'rxjs/Observable';
 import { AppComponent } from './app.component';
 import { Temperatura } from './Temperatura';
 import { Sensores } from './Sensores';
+import { GraficaTemperatura } from './graficaTemperatura';
+import { Monoxido } from './Monoxido';
 
 @Injectable()
 export class ServicioAplicacion {
@@ -71,8 +73,12 @@ export class ServicioAplicacion {
     return this.http.get(this.app.rutaBasica + 'reiniciar');
   }
 
-  solicitarTodasTemperaturas(): Observable <Temperatura[]>  {
-    return this.http2.get<Temperatura[]>(this.app.rutaBasica + 'temperaturas');
+  solicitarTodasTemperaturas(): Observable <GraficaTemperatura[]>  {
+    return this.http2.get<GraficaTemperatura[]>(this.app.rutaBasica + 'temperaturas');
+  }
+
+  solicitarMonoxidoActualBD(): Observable <Monoxido> {
+    return this.http2.get<Monoxido>(this.app.rutaBasica + 'monoxidosActual');
   }
 
 

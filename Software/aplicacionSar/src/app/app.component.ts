@@ -20,7 +20,8 @@ export class AppComponent {
   public mensaje = '';
  
   // public rutaBasica = 'http://192.168.2.1:3000/api/';
-  public rutaBasica = 'http://localhost:3000/api/';
+  // public rutaBasica = 'http://localhost:3000/api/';
+  public rutaBasica = 'http://192.168.1.39:3000/api/';
   public rutaWeb = '/web';
   constructor(public service: TemperaturaService) {
     this.sensoresActuales = new Sensores();
