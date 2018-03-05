@@ -1,136 +1,247 @@
-  import { Component, OnInit } from '@angular/core';
-
-  @Component({
-    selector: 'app-estadisticas',
-    templateUrl: './estadisticas.component.html',
-    styleUrls: ['./estadisticas.component.css']
-  })
-  export class EstadisticasComponent implements OnInit {
-    showXAxis = true;
-    showYAxis = true;
-    gradient = false;
-    showLegend = true;
-    showXAxisLabel = true;
-    xAxisLabel = 'Tiempo x Días';
-    showYAxisLabel = true;
-    yAxisLabel = 'Temperatura media por horas';
-    single: any[];
-    multi = [
-      {
-        'name': '1-2-2019',
-        'series': [
-          {
-            'name': '-10',
-            'value': -10
-          },
-          {
-            'name': '10',
-            'value': 10
-          }
-        ]
-      },
-      {
-        'name': '3-2-2019',
-        'series': [
-          {
-            'name': '18:00',
-            'value': -10
-          },
-          {
-            'name': '19:00',
-            'value': 10
-          }
-        ]
-      },
-      {
-        'name': '5-2-2019',
-        'series': [
-          {
-            'name': '18:00',
-            'value': -10
-          },
-          {
-            'name': '19:00',
-            'value': 10
-          }
-        ]
-      },
-
-      {
-        'name': '31-1-2018',
-        'series': [
-          {
-            'name': '10:00',
-            'value': 50
-          },
-          {
-            'name': '11:00',
-            'value': 12
-          },
-          {
-            'name': '12:00',
-            'value': 13
-          },
-          {
-            'name': '13:00',
-            'value': 16
-          }
-        ]
-      }
-    ];
+import { Component, OnInit } from '@angular/core';
+import { ServicioAplicacion } from '../servicio';
+import { Temperatura } from '../Temperatura';
+import { GraficaTemperatura } from '../graficaTemperatura';
+import { Serie } from '../Serie';
+import { Monoxido } from '../Monoxido';
+import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
 
 
+@Component({
+  selector: 'app-estadisticas',
+  templateUrl: './estadisticas.component.html',
+  styleUrls: ['./estadisticas.component.css'],
+  providers: [ServicioAplicacion]
+})
+export class EstadisticasComponent implements OnInit {
+  VENTANAACTUALIZACION = 1000;
+  fechai: Date;
+  fechaf: Date;
+  showXAxis = true;
+  showYAxis = true;
+  gradient = false;
+  showLegend = true;
+  showXAxisLabel = true;
+  xAxisLabel = 'Tiempo x Días';
+  showYAxisLabel = true;
+  yAxisLabel = 'Temperatura media por horas';
+  single: any[];
+  multi = [
+    {
+      'name': 'Columna fija',
+      'series': [
+        { 'name:': '0:00', 'value': null },
 
-    colorScheme = {
-      domain: ['#2a336d', '#07d3ea', '#f9c404', '#f90303']
-    };
-
-
-    LineashowXAxis = true;
-    LineashowYAxis = true;
-    Lineagradient = false;
-    LineashowLegend = true;
-    LineashowXAxisLabel = true;
-    LineaxAxisLabel = 'Horas';
-    LineashowYAxisLabel = true;
-    LineayAxisLabel = 'Valor medio PPM';
-    Lineasingle = [
-      {
-        'name': 'Monoxido',
-        'series': [
-          {
-            'name': '1',
-            'value': 100
-          },
-          {
-            'name': '2',
-            'value': 300
-          }
-        ]
-      }
-    ];
-    LineacolorScheme = {
-      domain: ['#2a336d', '#07d3ea', '#07d3ea', '#07d3ea']
-    };
-
-    valorPPM: number;
-
-    constructor() { }
-
-    ngOnInit() {
+      ]
     }
+  ];
 
-    onSelect(event) {
-      console.log(event);
+
+
+  colorScheme = {
+    domain: ['#2a336d', '#07d3ea', '#f9c404', '#f90303']
+  };
+
+
+  LineashowXAxis = true;
+  LineashowYAxis = true;
+  Lineagradient = false;
+  LineashowLegend = true;
+  LineashowXAxisLabel = true;
+  LineaxAxisLabel = 'Horas';
+  LineashowYAxisLabel = true;
+  LineayAxisLabel = 'Valor medio PPM';
+  Lineasingle = [
+    {
+      'name': 'Monoxido',
+      'series': [
+
+      ]
     }
+  ];
+  LineacolorScheme = {
+    domain: ['#2a336d', '#07d3ea', '#07d3ea', '#07d3ea']
+  };
 
-    agregarValor() {
-      let lista = this.Lineasingle;
-      this.Lineasingle = [];
-      const hoy = new Date().getHours().toString() + ':' + new Date().getMinutes().toString() + ':' + new Date().getSeconds().toString();
-      lista[0].series.push({'name': hoy, 'value': this.valorPPM});
-      this.Lineasingle.push(lista[0]);
-      console.log(this.Lineasingle);
-    }
+  valorPPM: number;
 
+  constructor(protected servicio: ServicioAplicacion) {
+    this.fechaf = new Date();
+    this.fechai = new Date();
+    this.fechai.setDate(this.fechaf.getDate() - 5);
   }
+
+  ngOnInit() {
+
+    this.servicio.solicitarTodasTemperaturas().subscribe(graficas => this.cargarEstadisticaTemperatura(graficas, this.fechai, this.fechaf));
+    IntervalObservable.create(this.VENTANAACTUALIZACION)
+      .subscribe(res => this.servicio.solicitarMonoxidoActualBD().subscribe(monoxido => this.cargarEstadisticaMonoxido(monoxido)));
+  }
+
+  cambiandoIntervalo() {
+    this.servicio.solicitarTodasTemperaturas().subscribe(graficas => this.cargarEstadisticaTemperatura(graficas, this.fechai, this.fechaf));
+  }
+
+  onSelect(event) {
+    console.log(event);
+  }
+
+  agregarValor() {
+    let lista = this.Lineasingle;
+    this.Lineasingle = [];
+    const hoy = new Date().getHours().toString() + ':' + new Date().getMinutes().toString() + ':' + new Date().getSeconds().toString();
+    lista[0].series.push({ 'name': hoy, 'value': this.valorPPM });
+    this.Lineasingle.push(lista[0]);
+    console.log(this.Lineasingle);
+    // 
+  }
+
+  cargarEstadisticaTemperatura(g: GraficaTemperatura[], fechai: Date, fechaf: Date) {
+    this.multi = [];
+    let graficoProcesado = [];
+    // g.forEach( columna => {
+    let seriesProcesado = [];
+    fechaf = new Date(fechaf);
+    fechai = new Date(fechai);
+    if (fechai && fechaf) {
+      g = g.filter(l => {
+        let fProcesar = l.fecha.split('/');
+        let fechaCrear = fProcesar[2] + '/' + fProcesar[1] + '/' + fProcesar[0];
+        let fecha = new Date(fechaCrear);
+
+        if (fecha > fechai && fecha < fechaf) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+    }
+
+    g.sort((a, b) => {
+      if (a.fecha < b.fecha) {
+        return -1;
+      } else {
+        if (a.fecha > b.fecha) {
+          return 1;
+        } else {
+          return 0;
+        }
+      }
+    });
+
+
+
+    g.forEach(columna => {
+      columna.series.forEach(s => {
+        seriesProcesado.push({ 'name': s.hora, 'value': s.valor });
+      });
+
+      // Formula de agustin parseInt(a.split(':')[0])*100 + parseInt(a.split(':')[1])
+      seriesProcesado.sort((a, b) => {
+        // tslint:disable-next-line:radix
+        const x = parseInt(a.name.split(':')[0]) * 100 + parseInt(a.name.split(':')[1]);
+        // tslint:disable-next-line:radix
+        const y = parseInt(b.name.split(':')[0]) * 100 + parseInt(b.name.split(':')[1]);
+
+        if (x < y) {
+          return -1;
+        } else {
+          if (x > y) {
+            return 1;
+          } else {
+            return 0;
+          }
+        }
+      });
+
+
+
+      // tslint:disable-next-line:radix
+      let seriesProcesado2 = [];
+
+      let horaAnterior = undefined;
+      seriesProcesado.forEach(s => {
+
+        let hora = parseInt(s.name.split(':')[0]);
+        if (hora !== horaAnterior) {
+          // tslint:disable-next-line:radix
+          let agrupados = seriesProcesado.filter(x => hora === parseInt(x.name.split(':')[0]));
+          let media = 0;
+          agrupados.forEach(a => {
+            media = a.value + media;
+          });
+          // console.log(agrupados);
+          let promedio = media / agrupados.length;
+          let nombreHoraAlmacenar = parseInt(s.name.split(':')[0]) + ':00';
+          seriesProcesado2.push({ 'name': nombreHoraAlmacenar, 'value': promedio });
+
+          horaAnterior = hora;
+        }
+      });
+      graficoProcesado.push({ 'name': columna.fecha, 'series': seriesProcesado2 });
+    });
+
+    // graficoProcesado tiene toda la grafica.
+    let t = [];
+    let r = [];
+    graficoProcesado.forEach(c => {
+      t = c.series.map(s => s);
+      r = r.concat(t);
+    });
+
+
+    let colDefecto = { 'name': 'Medias por hr', series: [] };
+    for (let i = 0; i < 24; i++) {
+      let cantidad = 0;
+
+      let filtro = r.filter(a => {
+        return a.name === i.toString() + ':00';
+      });
+
+      filtro = filtro.map(a => a.value);
+
+      const suma = filtro.reduce((a, b) => {
+          return a + b;
+      });
+
+      let valor;
+      if (filtro.length > 0) {
+        valor = suma / filtro.length;
+      } else {
+        valor = 'No hay datos';
+      }
+
+      colDefecto.series.push({ 'name': i.toString() + ':00', 'value': valor });
+
+    }
+
+    graficoProcesado.unshift(colDefecto);
+    // se agrega en la primera posicion
+
+    console.log(graficoProcesado);
+
+    this.multi = graficoProcesado;
+  }
+
+  cargarEstadisticaMonoxido(m: Monoxido) {
+    if (m !== null) {
+      let linea = this.Lineasingle;
+      this.Lineasingle = [];
+      linea[0].name = 'Monoxido';
+      if (linea[0].series.length >= this.valorPPM) {
+
+        linea[0].series.shift();
+      }
+      let iguales = linea[0].series.filter(s => s.name === m.hora);
+      if (iguales.length === 0) {
+        linea[0].series.push({ 'name': m.hora, 'value': m.valor });
+
+      }
+      this.Lineasingle.push(linea[0]);
+
+    }
+  }
+
+
+
+}

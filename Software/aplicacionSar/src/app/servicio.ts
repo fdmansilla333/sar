@@ -1,18 +1,21 @@
 import { Gps } from './Gps';
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
+import {HttpClient} from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 import { AppComponent } from './app.component';
 import { Temperatura } from './Temperatura';
 import { Sensores } from './Sensores';
+import { GraficaTemperatura } from './graficaTemperatura';
+import { Monoxido } from './Monoxido';
 
 @Injectable()
 export class ServicioAplicacion {
 
   public sensores: Sensores;
 
-  constructor(public http: Http, public app: AppComponent) {
+  constructor(public http: Http, public http2: HttpClient,  public app: AppComponent) {
     this.sensores = new Sensores();
    }
 
@@ -68,6 +71,14 @@ export class ServicioAplicacion {
 
   reiniciar() {
     return this.http.get(this.app.rutaBasica + 'reiniciar');
+  }
+
+  solicitarTodasTemperaturas(): Observable <GraficaTemperatura[]>  {
+    return this.http2.get<GraficaTemperatura[]>(this.app.rutaBasica + 'temperaturas');
+  }
+
+  solicitarMonoxidoActualBD(): Observable <Monoxido> {
+    return this.http2.get<Monoxido>(this.app.rutaBasica + 'monoxidosActual');
   }
 
 
