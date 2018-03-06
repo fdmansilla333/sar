@@ -7,8 +7,9 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "johnny-five": "^0.14.1",
-    "save": "^2.3.2",
-    "mongodb": "^2.2.33"
+    "mongodb": "^2.2.33",
+    "pm2": "^2.10.1",
+    "save": "^2.3.2"
   },
   "devDependencies": {},
   "scripts": {
