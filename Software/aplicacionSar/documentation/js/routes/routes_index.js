@@ -1,0 +1,1 @@
+var ROUTES_INDEX = {"name":"<root>","kind":"module","className":"AppModule","children":[{"kind":"component","component":"PizarraComponent","path":""},{"kind":"component","component":"EstadisticasComponent","path":"estadisticas"},{"kind":"component","component":"PanelInferiorComponent","path":"control"}]}
