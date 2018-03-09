@@ -1,26 +1,13 @@
-﻿Damián:
-Anexo de pruebas
-Angular --> cambiar novedades a --> eventos
-agregar emoticones DAMIAN
-Agregar redacción de estadísticas.
+﻿
+Usar ieee para armar la bibliografia  (TODOS)
+
+Capturas --> Estadísticas, temperaturas y monóxidos
+	 --> Pantalla principal
+
+Ver el archivo de configuración de motion (/etc/motion/motion.conf), modificar los parámetros en el cap 10
 
 
-Agustin:
-Expandir firmata con ejemplos(Agustin)
-Sacar del cap 4 python (agustin)
-capitulo 7 cambiar ilustración (Ilustración 43 - Remote Wiring de Windows), (Agustin)
-
-Agregar detalle de como funciona capitulo 7 firmata(Agustin)
-
-Lectura de un pin, analogico, periodico, detalles de la api del protocolo (perspectiva de johnny five)(Agustin)
-
-
-pasar a pasado (tiempos verbales) TODOS
-sacar en las secciones los signos ?¿ y ... (TODOS)
-ver en todos los outros (resumen de capitulo) (TODOS)
-Armar el anexo de las pruebas... con referencias a los titulos y secciones (TODOS)
-usar ieee  (TODOS)
-
+Conclusiones y trabajos futuros
 
 
 
