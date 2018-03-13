@@ -10,5 +10,10 @@ Ver el archivo de configuración de motion (/etc/motion/motion.conf), modificar 
 Conclusiones y trabajos futuros
 
 
+teamviewer sar2017
+pi sar2017
+damian dni
+agustin dni
+
 
 
