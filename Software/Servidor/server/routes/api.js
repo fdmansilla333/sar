@@ -6,8 +6,6 @@ const ObjectID = require('mongodb').ObjectID;
 
 const MINIMODISTANCIA = 20;
 
-
-
 /*Esto es nuevo*/
 
 
@@ -107,7 +105,6 @@ router.get('/monoxidosActual', (req, res) => {
             if (err) throw err;
             console.log(result);
             res.json(result);
-            
         });
         
     });

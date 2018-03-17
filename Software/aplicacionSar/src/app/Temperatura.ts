@@ -1,9 +1,9 @@
 export class Temperatura {
     constructor(
-        public valor: Number,
+        public temperatura: Number,
         public fecha: Date,
         public unidad: string,
-        // public temperatura: number, // sacar!
+        
     ) {
 
     }

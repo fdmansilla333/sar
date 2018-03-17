@@ -31,7 +31,7 @@ export class TablaSensoresComponent implements OnInit {
     if (!this.huboError) {
     this.servicio.solicitarTemperaturaActual()
       .subscribe(temperatura => {
-        this.temperaturaActual = temperatura.valor; // Revisar
+        this.temperaturaActual = temperatura.temperatura;
       }, error => {
         this.temperaturaActual = 'Error';
         this.huboError = true;
