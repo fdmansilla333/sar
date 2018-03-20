@@ -30,7 +30,7 @@ export class EstadisticasComponent implements OnInit {
     {
       'name': 'Columna fija',
       'series': [
-        { 'name:': '0:00', 'value': null },
+        { 'name:': '0:00', 'value': 3 },
 
       ]
     }
@@ -63,19 +63,23 @@ export class EstadisticasComponent implements OnInit {
     domain: ['#2a336d', '#07d3ea', '#07d3ea', '#07d3ea']
   };
 
-  valorPPM: number;
+  valorPPM: number; // numero de valores
 
   constructor(protected servicio: ServicioAplicacion) {
+
     this.fechaf = new Date();
     this.fechai = new Date();
     this.fechai.setDate(this.fechaf.getDate() - 5);
+    
   }
 
   ngOnInit() {
 
-    this.servicio.solicitarTodasTemperaturas().subscribe(graficas => this.cargarEstadisticaTemperatura(graficas, this.fechai, this.fechaf));
-    IntervalObservable.create(this.VENTANAACTUALIZACION)
-      .subscribe(res => this.servicio.solicitarMonoxidoActualBD().subscribe(monoxido => this.cargarEstadisticaMonoxido(monoxido)));
+    this.servicio.solicitarTodasTemperaturas()
+      .subscribe(graficas => this.cargarEstadisticaTemperatura(graficas, this.fechai, this.fechaf));
+     IntervalObservable.create(this.VENTANAACTUALIZACION)
+       .subscribe(res => this.servicio.solicitarMonoxidoActualBD().subscribe(monoxido => this.cargarEstadisticaMonoxido(monoxido)));
+
   }
 
   cambiandoIntervalo() {
@@ -92,30 +96,30 @@ export class EstadisticasComponent implements OnInit {
     const hoy = new Date().getHours().toString() + ':' + new Date().getMinutes().toString() + ':' + new Date().getSeconds().toString();
     lista[0].series.push({ 'name': hoy, 'value': this.valorPPM });
     this.Lineasingle.push(lista[0]);
-    console.log(this.Lineasingle);
-    // 
+    
+
   }
 
   cargarEstadisticaTemperatura(g: GraficaTemperatura[], fechai: Date, fechaf: Date) {
     this.multi = [];
     let graficoProcesado = [];
-    // g.forEach( columna => {
     let seriesProcesado = [];
     fechaf = new Date(fechaf);
     fechai = new Date(fechai);
+
     if (fechai && fechaf) {
       g = g.filter(l => {
-        let fProcesar = l.fecha.split('/');
-        let fechaCrear = fProcesar[2] + '/' + fProcesar[1] + '/' + fProcesar[0];
-        let fecha = new Date(fechaCrear);
+        let fecha = new Date(l.fecha);
 
-        if (fecha > fechai && fecha < fechaf) {
+        if (fecha >= fechai && fecha <= fechaf) {
           return true;
         } else {
           return false;
         }
       });
     }
+
+
 
     g.sort((a, b) => {
       if (a.fecha < b.fecha) {
@@ -170,7 +174,7 @@ export class EstadisticasComponent implements OnInit {
           agrupados.forEach(a => {
             media = a.value + media;
           });
-          // console.log(agrupados);
+          
           let promedio = media / agrupados.length;
           let nombreHoraAlmacenar = parseInt(s.name.split(':')[0]) + ':00';
           seriesProcesado2.push({ 'name': nombreHoraAlmacenar, 'value': promedio });
@@ -200,25 +204,27 @@ export class EstadisticasComponent implements OnInit {
 
       filtro = filtro.map(a => a.value);
 
-      const suma = filtro.reduce((a, b) => {
-          return a + b;
-      });
-
-      let valor;
       if (filtro.length > 0) {
-        valor = suma / filtro.length;
-      } else {
-        valor = 'No hay datos';
-      }
+        const suma = filtro.reduce((a, b) => {
+          return a + b;
+        });
 
-      colDefecto.series.push({ 'name': i.toString() + ':00', 'value': valor });
+        let valor;
+        if (filtro.length > 0) {
+          valor = suma / filtro.length;
+        } else {
+          valor = 'No hay datos';
+        }
+
+        colDefecto.series.push({ 'name': i.toString() + ':00', 'value': valor });
+      }
 
     }
 
     graficoProcesado.unshift(colDefecto);
     // se agrega en la primera posicion
 
-    console.log(graficoProcesado);
+    
 
     this.multi = graficoProcesado;
   }
