@@ -6,11 +6,14 @@ const ObjectID = require('mongodb').ObjectID;
 
 const MINIMODISTANCIA = 20;
 
+<<<<<<< HEAD
 /*Esto es para apagar*/
 
 const control = require('./apagar');
 console.log(control.saludar());
 
+=======
+>>>>>>> 038149f684df9975498e4a06965f85e267f20cc3
 /*Esto es nuevo*/
 
 
@@ -113,8 +116,11 @@ router.get('/monoxidosActual', (req, res) => {
             if (err) throw err;
             console.log(result);
             res.json(result);
+<<<<<<< HEAD
 	    db.close();
             
+=======
+>>>>>>> 038149f684df9975498e4a06965f85e267f20cc3
         });
         
     });
