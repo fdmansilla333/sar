@@ -2,6 +2,15 @@ const express = require('express');
 const router = express.Router();
 const MongoClient = require('mongodb').MongoClient;
 const ObjectID = require('mongodb').ObjectID;
+const MINIMODISTANCIA = 20;
+
+
+const connection = (closure) => {
+    return MongoClient.connect('mongodb://localhost:27017/sar', (err, db) => {
+        if (err) return console.log(err);
+        closure(db);
+    });
+};
 
   var ports = [{ id: "mega", port: "/dev/ttyACM0" },
   { id: "nano", port: "/dev/ttyUSB0" }
@@ -146,13 +155,17 @@ var gps = new five.GPS({
     //Muestro la temperatura
     thermometer.on("change", function () {
       //console.log(this.celsius + "°C");
-
+	//Agregado para generar hora
+	var ahora = new Date();
+	var hora = ahora.getHours()+':'+ahora.getMinutes()+':'+ahora.getSeconds();
+	var fechaAlmacenar = ahora.getFullYear()+'/'+(ahora.getMonth()+1)+'/'+ahora.getDate();
 
 		connection((db) => {
-        		db.collection('temperatura')
-            		.insert({"temperatura":this.celsius, "fecha": new Date()})
+        		db.collection('temperaturas')
+            		.insert({"valor":this.celsius, "fecha": fechaAlmacenar, "hora": hora, "fechaSys": ahora })
                .then((temperaturas) => {
-                //console.log('Insertando temperatura');
+                console.log('Insertando temperatura:' + this.celsius);
+		db.close();
             })
             .catch((err) => {
                 console.log('Error al insertar');
@@ -162,11 +175,14 @@ var gps = new five.GPS({
 
 	sensor.on("change", function (value) {
       		connection((db) => {
-			db.collection('mq7')
-			.insert({"sensorMQ7":sensor.scaleTo([20,2000]) , "fecha": new Date()})
+			    var ahora = new Date();
+			hora = ahora.getHours()+':'+ahora.getMinutes()+':'+ahora.getSeconds();
+			db.collection('monoxidos')
+			.insert({"valor":sensor.scaleTo([20,2000]) , "fecha": new Date(), "hora": hora})
 			.then((sensorMQ7) => {
 				console.log('Insertando MQ7');
 				console.log(sensor.scaleTo([20,2000]) + 'ppm'); // float
+				db.close();
 
 			})
 			.catch((err)=> {
@@ -300,3 +316,5 @@ var gps = new five.GPS({
 	});
 
 });
+
+module.exports = router;

@@ -28,7 +28,8 @@ app.use(function(req, res, next) {
 
 
 // API location
-app.use('/api', api);
+app.use('/api', api.rutas);
+app.use('/api', api.placas);
 
 // Send all other requests to the Angular app
 app.get('*', (req, res) => {

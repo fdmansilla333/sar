@@ -6,7 +6,10 @@ const ObjectID = require('mongodb').ObjectID;
 
 const MINIMODISTANCIA = 20;
 
+/*Esto es para apagar*/
 
+const control = require('./apagar');
+console.log(control.saludar());
 
 /*Esto es nuevo*/
 
@@ -19,7 +22,8 @@ if (process.env.AMBIENTE == 'DESARROLLO') {
 } else {
     console.log('Iniciado Test');
     var placas = require('./placas');
-    module.exports = placas;
+    module.exports.placas = placas;
+   
 }
 
 
@@ -63,6 +67,7 @@ router.get('/temperaturas', (req, res) => {
 
                             if(lista.length  === fechas.length) {
                                 res.json(lista);
+				db.close();
                             }
                            
                         });
@@ -84,6 +89,7 @@ router.get('/monoxidos', (req, res) => {
             .then((valores) => {
                 response = valores;
                 res.json(response);
+		db.close();
             })
             .catch((err) => {
                 sendError(err, res);
@@ -107,6 +113,7 @@ router.get('/monoxidosActual', (req, res) => {
             if (err) throw err;
             console.log(result);
             res.json(result);
+	    db.close();
             
         });
         
@@ -118,4 +125,14 @@ router.get('/monoxidosActual', (req, res) => {
 Se exportan las variables para que sean conocidas por Nodejs
 */
 
-module.exports = router;
+router.get('/apagar', (req, res) => {
+	console.log('LLego solicitud de apagado...');
+	control.apagar;
+});
+
+router.get('/reiniciar', (req, res) => {
+	console.log('Llego solicitud de reinicio...');
+	control.reiniciar();
+});
+
+module.exports.rutas = router;
