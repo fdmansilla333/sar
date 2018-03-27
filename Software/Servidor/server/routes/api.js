@@ -6,14 +6,13 @@ const ObjectID = require('mongodb').ObjectID;
 
 const MINIMODISTANCIA = 20;
 
-<<<<<<< HEAD
+
 /*Esto es para apagar*/
 
 const control = require('./apagar');
 console.log(control.saludar());
 
-=======
->>>>>>> 038149f684df9975498e4a06965f85e267f20cc3
+
 /*Esto es nuevo*/
 
 
@@ -63,12 +62,16 @@ router.get('/temperaturas', (req, res) => {
 
                 fechas.forEach(f => {
                     db.collection("temperaturas")
-                        .find({ "fecha": f }, { "valor": 1, "hora": 1 , "_id":0}).sort({ "fecha":1 , "hora": 1 })
+                        .find({ "fecha": f }, { "valor": 1, "hora": 1 , "_id":0}).sort({ "fecha":1 , "hora": 1 }).batchSize(30000)
                         .toArray(function (err, result) {
                             if (err) throw err;
                             lista.push({series:result, fecha:f});
 
                             if(lista.length  === fechas.length) {
+				
+				console.log('Mostrando ----****');
+				console.log(lista[5].series.length);
+				console.log(lista[5].fecha);
                                 res.json(lista);
 				db.close();
                             }
@@ -107,20 +110,16 @@ router.get('/monoxidosActual', (req, res) => {
 
     hora1 = ahora.getHours()+':'+ahora.getMinutes()+':'+ahora.getSeconds();
     hora2 = despues.getHours()+':'+despues.getMinutes()+':'+despues.getSeconds();
-    console.log('Buscando con '+hora1+' y '+hora2);
+    // console.log('Buscando con '+hora1+' y '+hora2);
    
     connection((db) => {
         db.collection('monoxidos')
         .findOne({ "hora":  {$gte: hora1, $lte: hora2} }, { "valor": 1, "hora": 1 , "_id":0},
         function (err, result) {
             if (err) throw err;
-            console.log(result);
+            // console.log(result);
             res.json(result);
-<<<<<<< HEAD
 	    db.close();
-            
-=======
->>>>>>> 038149f684df9975498e4a06965f85e267f20cc3
         });
         
     });
@@ -133,7 +132,7 @@ Se exportan las variables para que sean conocidas por Nodejs
 
 router.get('/apagar', (req, res) => {
 	console.log('LLego solicitud de apagado...');
-	control.apagar;
+	control.apagar();
 });
 
 router.get('/reiniciar', (req, res) => {
