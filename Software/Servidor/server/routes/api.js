@@ -17,7 +17,6 @@ if (process.env.AMBIENTE == 'DESARROLLO') {
     console.log('Iniciado Test');
     var placas = require('./placas');
     module.exports.placas = placas;
-
 }
 
 
