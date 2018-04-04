@@ -28,9 +28,7 @@ export class AppComponent {
   constructor(public service: TemperaturaService) {
     this.sensoresActuales = new Sensores();
     this.tiempoDelay = 1000;
-   /* service.getTemperaturas().subscribe(res => { console.log(res); this.temperaturas = res; }, error => console.log(error), () => {
-      console.log('Finalizo la solicitud de temperaturas');
-    });*/
+
   }
 
 }

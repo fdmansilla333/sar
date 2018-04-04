@@ -15,6 +15,12 @@ import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
 })
 export class EstadisticasComponent implements OnInit {
   VENTANAACTUALIZACION = 1000;
+  lineaAncho = 800;
+  lineaAlto = 400;
+  tempAncho = 800;
+  tempAlto = 400;
+  view: number[];
+  viewTemp: number[];
   fechai: Date;
   fechaf: Date;
   showXAxis = true;
@@ -69,21 +75,33 @@ export class EstadisticasComponent implements OnInit {
 
     this.fechaf = new Date();
     this.fechai = new Date();
-    this.fechai.setDate(this.fechaf.getDate() - 5);
+    this.fechai.setDate(this.fechaf.getDate() - 2);
+    this.valorPPM = 5;
+    this.view = [this.lineaAncho, this.lineaAlto];
+    this.viewTemp = [this.tempAncho, this.tempAlto];
     
   }
 
   ngOnInit() {
 
     this.servicio.solicitarTodasTemperaturas()
-      .subscribe(graficas => this.cargarEstadisticaTemperatura(graficas, this.fechai, this.fechaf));
+      .subscribe(graficas => this.cargarEstadisticaTemperatura(graficas));
      IntervalObservable.create(this.VENTANAACTUALIZACION)
        .subscribe(res => this.servicio.solicitarMonoxidoActualBD().subscribe(monoxido => this.cargarEstadisticaMonoxido(monoxido)));
 
   }
 
   cambiandoIntervalo() {
-    this.servicio.solicitarTodasTemperaturas().subscribe(graficas => this.cargarEstadisticaTemperatura(graficas, this.fechai, this.fechaf));
+    this.fechai = new Date(this.fechai);
+    this.fechaf = new Date(this.fechaf);
+    this.fechai.setDate(this.fechai.getDate() - 1);
+    this.fechaf.setDate(this.fechaf.getDate() + 1);
+
+    console.log(this.fechai);
+    console.log(this.fechaf);
+
+
+    this.servicio.solicitarTodasTemperaturas().subscribe(graficas => this.cargarEstadisticaTemperatura(graficas));
   }
 
   onSelect(event) {
@@ -100,24 +118,27 @@ export class EstadisticasComponent implements OnInit {
 
   }
 
-  cargarEstadisticaTemperatura(g: GraficaTemperatura[], fechai: Date, fechaf: Date) {
+  cargarEstadisticaTemperatura(g: GraficaTemperatura[]) {
+ 
+
     this.multi = [];
     let graficoProcesado = [];
     let seriesProcesado = [];
-    fechaf = new Date(fechaf);
-    fechai = new Date(fechai);
-
-    if (fechai && fechaf) {
+    
+    if (this.fechai && this.fechaf) {
       g = g.filter(l => {
         let fecha = new Date(l.fecha);
+ 
 
-        if (fecha >= fechai && fecha <= fechaf) {
+        if (fecha >= this.fechai && fecha <= this.fechaf) {
           return true;
         } else {
           return false;
         }
       });
     }
+
+ 
 
 
 
@@ -139,6 +160,7 @@ export class EstadisticasComponent implements OnInit {
       columna.series.forEach(s => {
         seriesProcesado.push({ 'name': s.hora, 'value': s.valor });
       });
+      console.log(seriesProcesado);
 
       // Formula de agustin parseInt(a.split(':')[0])*100 + parseInt(a.split(':')[1])
       seriesProcesado.sort((a, b) => {
@@ -157,6 +179,8 @@ export class EstadisticasComponent implements OnInit {
           }
         }
       });
+
+      console.log(seriesProcesado);
 
 
 
@@ -250,4 +274,12 @@ export class EstadisticasComponent implements OnInit {
 
 
 
+  cambiarTamanio() {
+    this.view = [this.lineaAncho, this.lineaAlto];
+  }
+
+
+  cambiarTamanioTemp() {
+    this.viewTemp = [this.tempAncho, this.tempAlto];
+  }
 }
