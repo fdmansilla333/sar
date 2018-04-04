@@ -2,11 +2,20 @@ const express = require('express');
 const router = express.Router();
 const MongoClient = require('mongodb').MongoClient;
 const ObjectID = require('mongodb').ObjectID;
+const MINIMODISTANCIA = 20;
 
-  var ports = [{ id: "mega", port: "/dev/ttyACM0" },
-  { id: "nano", port: "/dev/ttyUSB0" }
-  ];
-  
+
+const connection = (closure) => {
+    return MongoClient.connect('mongodb://localhost:27017/sar', (err, db) => {
+        if (err) return console.log(err);
+        closure(db);
+    });
+};
+
+var ports = [{ id: "mega", port: "/dev/ttyACM0" },
+{ id: "nano", port: "/dev/ttyUSB0" }
+];
+
 var five = require("johnny-five");
 
 new five.Boards(ports).on("ready", function () {
@@ -15,67 +24,63 @@ new five.Boards(ports).on("ready", function () {
     var motor2;
     var motor3;
     var motor4;
-    
-	// configuro el sensor de monoxido
-	//Se enciende la placa
+
+    // configuro el sensor de monoxido
+    //Se enciende la placa
     var sensor = new five.Sensor({
-	pin: "A0",
-	board: this.byId("mega"),
-	freq: 1000 //Frecuencia en msg
+        pin: "A0",
+        board: this.byId("mega"),
+        freq: 1000 //Frecuencia en msg
 
-	});
-
-
-    
-
+    });
     //Configuro el sensor de temperatura
     var thermometer = new five.Thermometer({
-      controller: "DS18B20",
-      pin: 2,
-      board: this.byId("nano")
+        controller: "DS18B20",
+        pin: 2,
+        board: this.byId("nano")
     });
 
-var gps = new five.GPS({
-      pins: {
-        rx: 15,
-        tx: 14,
-        board: this.byId("mega")
-      }
+    var gps = new five.GPS({
+        pins: {
+            rx: 15,
+            tx: 14,
+            board: this.byId("mega")
+        }
     });
 
-    // If latitude, longitude change log it
+    // si latitud o longitud cambian
     gps.on("ready", function () {
-      console.log("position");
-      console.log("  latitude   : ", this.latitude);
-      console.log("  longitude  : ", this.longitude);
-      console.log("  altitude   : ", this.altitude);
-      
-      connection((db) => {
-        		db.collection('gps')
-            		.insert({"latitude":this.latitude, "longitude":this.longitude, "altitude":this.altitude, "fecha": new Date()})
-               .then((muestrasGPS) => {
-                console.log('Insertando muestra GPS');
-            })
-            .catch((err) => {
-                console.log('Error al insertar GPS');
-            });
-		});
+        console.log("position");
+        console.log("  latitude   : ", this.latitude);
+        console.log("  longitude  : ", this.longitude);
+        console.log("  altitude   : ", this.altitude);
+
+        connection((db) => {
+            db.collection('gps')
+                .insert({ "latitude": this.latitude, "longitude": this.longitude, "altitude": this.altitude, "fecha": new Date() })
+                .then((muestrasGPS) => {
+                    console.log('Insertando muestra GPS');
+                })
+                .catch((err) => {
+                    console.log('Error al insertar GPS');
+                });
+        });
     });
     // If speed, course change log it
     gps.on("navigation", function () {
-      console.log("navigation");
-      console.log("  speed   : ", this.speed);
-      console.log("  course  : ", this.course);
-      connection((db) => {
-        		db.collection('navegacion')
-            		.insert({"velocidad":this.speed, "curso":this.course, "fecha": new Date()})
-               .then((muestrasGPS) => {
-                console.log('Insertando muestra navegacion');
-            })
-            .catch((err) => {
-                console.log('Error al insertar GPS');
-            });
-		});
+        console.log("navigation");
+        console.log("  speed   : ", this.speed);
+        console.log("  course  : ", this.course);
+        connection((db) => {
+            db.collection('navegacion')
+                .insert({ "velocidad": this.speed, "curso": this.course, "fecha": new Date() })
+                .then((muestrasGPS) => {
+                    console.log('Insertando muestra navegacion');
+                })
+                .catch((err) => {
+                    console.log('Error al insertar GPS');
+                });
+        });
     });
 
     //Configuro el sensor de proximidad en el pin 22
@@ -97,7 +102,7 @@ var gps = new five.GPS({
         board: this.byId("mega")
     });
 
-    var distanciaAdelante=0;
+    var distanciaAdelante = 0;
 
 
     motor1 = new five.Motor({
@@ -142,47 +147,48 @@ var gps = new five.GPS({
         motor3.stop();
         motor4.stop();
     }
-    
+
     //Muestro la temperatura
     thermometer.on("change", function () {
-      //console.log(this.celsius + "°C");
+        //console.log(this.celsius + "°C");
+        //Agregado para generar hora
+        var ahora = new Date();
+        var hora = ahora.getHours() + ':' + ahora.getMinutes() + ':' + ahora.getSeconds();
+        var fechaAlmacenar = ahora.getFullYear() + '/' + (ahora.getMonth() + 1) + '/' + ahora.getDate();
 
-
-		connection((db) => {
-        		db.collection('temperatura')
-            		.insert({"temperatura":this.celsius, "fecha": new Date()})
-               .then((temperaturas) => {
-                //console.log('Insertando temperatura');
-            })
-            .catch((err) => {
-                console.log('Error al insertar');
-            });
+        connection((db) => {
+            db.collection('temperaturas')
+                .insert({ "valor": this.celsius, "fecha": fechaAlmacenar, "hora": hora, "fechaSys": ahora })
+                .then((temperaturas) => {
+                    console.log('Insertando temperatura:' + this.celsius);
+                    db.close();
+                })
+                .catch((err) => {
+                    console.log('Error al insertar');
+                });
+        });
     });
-});
 
-	sensor.on("change", function (value) {
-      		connection((db) => {
-			db.collection('mq7')
-			.insert({"sensorMQ7":sensor.scaleTo([20,2000]) , "fecha": new Date()})
-			.then((sensorMQ7) => {
-				console.log('Insertando MQ7');
-				console.log(sensor.scaleTo([20,2000]) + 'ppm'); // float
+    sensor.on("change", function (value) {
+        connection((db) => {
+            var ahora = new Date();
+            hora = ahora.getHours() + ':' + ahora.getMinutes() + ':' + ahora.getSeconds();
+            db.collection('monoxidos')
+                .insert({ "valor": sensor.scaleTo([20, 2000]), "fecha": new Date(), "hora": hora })
+                .then((sensorMQ7) => {
+                    console.log('Insertando MQ7');
+                    console.log(sensor.scaleTo([20, 2000]) + 'ppm'); // float
+                    db.close();
 
-			})
-			.catch((err)=> {
-				console.log('Error al insertar valores de mq7');
-			});
-		});
-});
+                })
+                .catch((err) => {
+                    console.log('Error al insertar valores de mq7');
+                });
+        });
+    });
 
     // Si se generan modificaciones en la distancia de objetos, paran o avanzan los motores
     proximityAdelante.on("change", function () {
-        // console.log("Entro a change", cont);
-        //proximityAdelante.on("data", function () {
-            //console.log("  cm  : ", this.cm);
-            // console.log("Entro a data");
-        // });
-        //cont++;
 
         if (proximityAdelante.cm <= MINIMODISTANCIA) {
 
@@ -193,22 +199,16 @@ var gps = new five.GPS({
 
     router.get('/arriba', (req, res) => {
         console.log('Accionando arriba');
-	if (proximityAdelante.cm > MINIMODISTANCIA){
-        motor1.forward(255);
-        motor2.forward(255);
-        motor3.forward(255);
-        motor4.forward(255);
-        //board.wait(1000, function () {
-         //   console.log('Fin arriba');
-         //   motor1.stop();
-          //  motor2.stop();
-          //  motor3.stop();
-           // motor4.stop();
-        // });
-	res.json("ok");
-	}else{
-        res.json("{'error':'objeto adelante'}");
-	}
+        if (proximityAdelante.cm > MINIMODISTANCIA) {
+            motor1.forward(255);
+            motor2.forward(255);
+            motor3.forward(255);
+            motor4.forward(255);
+
+            res.json("ok");
+        } else {
+            res.json("{'error':'objeto adelante'}");
+        }
 
     });
 
@@ -219,13 +219,7 @@ var gps = new five.GPS({
         motor2.reverse(255);
         motor3.forward(255);
         motor4.reverse(255);
-        //board.wait(1000, function () {
-            // console.log('Fin izquierda');
-            // motor1.stop();
-            // motor2.stop();
-            // motor3.stop();
-            // motor4.stop();
-        // });
+
     });
 
     router.get('/derecha', (req, res) => {
@@ -234,13 +228,7 @@ var gps = new five.GPS({
         motor2.forward(255);
         motor3.reverse(255);
         motor4.forward(255);
-         // board.wait(1000, function () {
-             // console.log('Fin derecha');
-             // motor1.stop();
-             // motor2.stop();
-             // motor3.stop();
-             // motor4.stop();
-         // });
+
         res.json("ok");
     });
     router.get('/abajo', (req, res) => {
@@ -250,13 +238,7 @@ var gps = new five.GPS({
         motor2.reverse(255);
         motor3.reverse(255);
         motor4.reverse(255);
-        // board.wait(1000, function () {
-            // console.log('Fin abajo');
-            // motor1.stop();
-            // motor2.stop();
-            // motor3.stop();
-            // motor4.stop();
-        // });
+
         res.json("ok");
 
     });
@@ -269,34 +251,36 @@ var gps = new five.GPS({
         motor4.stop();
         res.json("ok");
     });
-    
-    router.get('/ultrasonido', (req,res) => {
-		res.json([{ultrasonidoAdelante:proximityAdelante.cm},
-		{ultrasonidoDerecho: proximityDerecho.cm},
-		{ultrasonidoIzquierdo: proximityIzquierdo.cm}
-		]);
-	});
-	
-	router.get('/gps', (req,res) => {
-		res.json({
-			latitud: gps.latitude,
-			longitud: gps.longitude,
-			altitud: gps.altitude,
-			velocidad: gps.speed,
-			sat: gps.sat,
-			curso: gps.course,
-			tiempo: gps.time
-			
-			});
-	});
-	router.get('/temperatura', (req,res) => {
-		res.json({
-			temperatura: thermometer.celsius, unidad: "celsius"
-		});
-	});
-	
-	router.get('/monoxido', (req, res) => {
-		res.json({monoxido: sensor.scaleTo([20,2000]), unidad: "ppm"});
-	});
+
+    router.get('/ultrasonido', (req, res) => {
+        res.json([{ ultrasonidoAdelante: proximityAdelante.cm },
+        { ultrasonidoDerecho: proximityDerecho.cm },
+        { ultrasonidoIzquierdo: proximityIzquierdo.cm }
+        ]);
+    });
+
+    router.get('/gps', (req, res) => {
+        res.json({
+            latitud: gps.latitude,
+            longitud: gps.longitude,
+            altitud: gps.altitude,
+            velocidad: gps.speed,
+            sat: gps.sat,
+            curso: gps.course,
+            tiempo: gps.time
+
+        });
+    });
+    router.get('/temperatura', (req, res) => {
+        res.json({
+            temperatura: thermometer.celsius, unidad: "celsius"
+        });
+    });
+
+    router.get('/monoxido', (req, res) => {
+        res.json({ monoxido: sensor.scaleTo([20, 2000]), unidad: "ppm" });
+    });
 
 });
+
+module.exports = router;

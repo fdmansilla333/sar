@@ -5,22 +5,46 @@
       <div class="panel-heading">
         <h3 class="panel-title">Estadísticas de Temperatura</h3>
       </div>
-      
-      <div class="panel-body" align="center" *ngIf="multi.length > 1">
 
-        <ngx-charts-heat-map [scheme]="colorScheme" [results]="multi" [legend]="showLegend" [gradient]="gradient" [xAxis]="showXAxis"
-          [yAxis]="showYAxis" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
-          [yAxisLabel]="yAxisLabel" (select)="onSelect($event)">
-          <!--[view]="[800, 1000]"-->
-        </ngx-charts-heat-map>
-      </div>
+      <div class="panel-body" align="center" *ngIf="multi.length > 1">
+        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+
+          <ngx-charts-heat-map [scheme]="colorScheme" [results]="multi" [legend]="showLegend" [gradient]="gradient" [xAxis]="showXAxis"
+            [yAxis]="showYAxis" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
+            legendTitle="Temperaturas x" [yAxisLabel]="yAxisLabel" (select)="onSelect($event)" [view]="viewTemp">
+          </ngx-charts-heat-map>
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            <label style="color:black">Ancho</label>
     
-      <div class="panel-body" align="center" *ngIf="multi.length === 0">
+            <input type="number" name="ancho" [(ngModel)]="tempAncho" min="1" (change)="cambiarTamanioTemp()">
+    
+            <label style="color:black">Alto</label>
+            <input type="number" name="alto" [(ngModel)]="tempAlto" min="1" (change)="cambiarTamanioTemp()">
+            <br>
+          <label style="color:black">Ingrese fecha inicio</label>
+          <input type="date" name="fechai" [(ngModel)]="fechai">
+          <label style="color:black">Ingrese fecha fin</label>
+          <input type="date" name="fechaf" [(ngModel)]="fechaf">
+          <button type="button" class="btn btn-info" (click)="cambiandoIntervalo()">Obtener</button>
+
+          
+
+        </div>
+
+      </div>
+
+      <div class="panel-body" align="center" *ngIf="multi.length <= 1">
 
         <div class="alert alert-info">
           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
           <strong>No hay datos</strong> Cambie los parámetros de temperatura
         </div>
+        <label style="color:black">Ingrese fecha inicio</label>
+        <input type="date" name="fechai" [(ngModel)]="fechai">
+        <label style="color:black">Ingrese fecha fin</label>
+        <input type="date" name="fechaf" [(ngModel)]="fechaf">
+        <button type="button" class="btn btn-info" (click)="cambiandoIntervalo()">Obtener</button>
 
       </div>
     </div>
@@ -28,55 +52,56 @@
 </div>
 
 
-<div class="row">
-
-  <div class="col-xs col-sm col-md col-lg">
-    <label style="color:white">Ingrese fecha inicio</label>
-    <input type="date" name="fechai" [(ngModel)]="fechai">
-    <label style="color:white">Ingrese fecha fin</label>
-    <input type="date" name="fechaf" [(ngModel)]="fechaf">
-    <button type="button" class="btn btn-info" (click)="cambiandoIntervalo()">Obtener</button>
-
-  </div>
 
 
-</div>
-<br>
+
+
+
+
+
 
 <div class="row">
 
-  <div class="col-xs col-sm col-md col-lg">
-    <div class="panel panel-primary">
-      <div class="panel-heading">
-        <h3 class="panel-title">Estadísticas de Monóxido de Carbono</h3>
-      </div>
-      <div class="panel-body" *ngIf="Lineasingle && Lineasingle[0].series.length > 0">
+
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Estadísticas de Monóxido de Carbono</h3>
+    </div>
+    <div class="panel-body fixed-panel" *ngIf="Lineasingle && Lineasingle[0].series.length > 0">
+
+      <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+
         <ngx-charts-line-chart [scheme]="LineacolorScheme" [results]="Lineasingle" [gradient]="Lineagradient" [xAxis]="LineashowXAxis"
           [yAxis]="LineashowYAxis" [legend]="LineashowLegend" [showXAxisLabel]="LineashowXAxisLabel" [showYAxisLabel]="LineashowYAxisLabel"
-          [xAxisLabel]="LineaxAxisLabel" [yAxisLabel]="LineayAxisLabel" (select)="onSelect($event)" [view]="[500, 300]">
+          [animations]="true" [xAxisLabel]="LineaxAxisLabel" [yAxisLabel]="LineayAxisLabel" (select)="onSelect($event)" legendTitle="Nivel de monoxido actual"
+          roundDomains="true" autoScale="true" [view]="view">
         </ngx-charts-line-chart>
-      </div>
-      <div class="panel-body" *ngIf="Lineasingle[0].series.length === 0">
-
-        <div class="alert alert-info" align="center">
-          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-          <strong>Esperar a obtener datos</strong> Faltan datos para procesar monóxido
-        </div>
 
       </div>
+
+      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+
+        <label style="color:black">Valores a visualizar</label>
+        <input type="number" name="valorPPM" value="5" [(ngModel)]="valorPPM" min="1">
+
+        <label style="color:black">Ancho</label>
+        <input type="number" name="ancho" [(ngModel)]="lineaAncho" min="1" (change)="cambiarTamanio()">
+
+        <label style="color:black">Alto</label>
+        <input type="number" name="alto" [(ngModel)]="lineaAlto" min="1" (change)="cambiarTamanio()">
+      </div>
+
+
+
+
+    </div>
+    <div class="panel-body" *ngIf="Lineasingle[0].series.length === 0">
+
+      <div class="alert alert-info" align="center">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong>Esperar a obtener datos</strong> Faltan datos para procesar monóxido
+      </div>
+
     </div>
   </div>
-
-
-
-</div>
-
-
-<div class="row">
-
-  <div class="col-xs col-sm col-md col-lg">
-    <label style="color:white">Ingrese maximo valores a visualizar</label>
-    <input type="number" name="valorPPM" value="10" [(ngModel)]="valorPPM" min="1">
-  </div>
-
 </div>

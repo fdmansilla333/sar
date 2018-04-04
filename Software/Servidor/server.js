@@ -4,10 +4,6 @@ const path = require('path');
 const http = require('http');
 const app = express();
 
-
-
-  
-
 // API file for interacting with MongoDB
 const api = require('./server/routes/api');
 
@@ -18,8 +14,7 @@ app.use(bodyParser.urlencoded({ extended: false}));
 // Angular DIST output folder
 app.use(express.static(path.join(__dirname, 'dist')));
 
-// CORS (sacar)
-
+// CORS
 app.use(function(req, res, next) { 
 	res.header("Access-Control-Allow-Origin", "*"); 
 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept"); 
@@ -28,9 +23,10 @@ app.use(function(req, res, next) {
 
 
 // API location
-app.use('/api', api);
+app.use('/api', api.rutas);
+app.use('/api', api.placas);
 
-// Send all other requests to the Angular app
+// Enviar todo lo otro a Angular
 app.get('*', (req, res) => {
 	if (process.env.AMBIENTE == 'DESARROLLO'){
 		//Estoy levantando angular en puerto 4200
