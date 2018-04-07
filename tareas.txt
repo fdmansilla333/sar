@@ -1,13 +1,9 @@
 ﻿
-Usar ieee para armar la bibliografia  (TODOS)
+Cambiar ilustración 80, la primer pantalla de la app web en funcionamiento
 
-Capturas --> Estadísticas, temperaturas y monóxidos
-	 --> Pantalla principal
 
 Ver el archivo de configuración de motion (/etc/motion/motion.conf), modificar los parámetros en el cap 10
 
-
-Conclusiones y trabajos futuros
 
 
 teamviewer sar2017
